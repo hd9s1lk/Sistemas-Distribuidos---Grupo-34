@@ -26,3 +26,4 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Servido
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Servidor\obj\Debug\net8.0\Servidor.pdb
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Servidor\obj\Debug\net8.0\Servidor.genruntimeconfig.cache
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Servidor\obj\Debug\net8.0\ref\Servidor.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Servidor\obj\Debug\net8.0\Servidor.sourcelink.json

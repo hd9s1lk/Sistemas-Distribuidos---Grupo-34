@@ -26,3 +26,4 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente\obj\Debug\net8.0\Cliente.pdb
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente\obj\Debug\net8.0\Cliente.genruntimeconfig.cache
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente\obj\Debug\net8.0\ref\Cliente.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente\obj\Debug\net8.0\Cliente.sourcelink.json

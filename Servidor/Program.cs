@@ -18,7 +18,7 @@ public class ServerClass
     }
 }
 
-class SocketServer
+class Example
 {
     private static Mutex mut = new Mutex();
     private const int numIterations = 1;
@@ -34,36 +34,56 @@ class SocketServer
 
     private static void UseResource()
     {
-        // Wait until it is safe to enter.
-        Console.WriteLine("{0} is requesting the mutex",
-                          Thread.CurrentThread.Name);
-        mut.WaitOne();
+        // Wait until it is safe to enter, and do not enter if the request times out.
+        Console.WriteLine("{0} is requesting the mutex", Thread.CurrentThread.Name);
+        if (mut.WaitOne(1000))
+        {
+            Console.WriteLine("{0} has entered the protected area",
+                Thread.CurrentThread.Name);
 
-        Console.WriteLine("{0} has entered the protected area",
-                          Thread.CurrentThread.Name);
+            // Place code to access non-reentrant resources here.
 
-        // Place code to access non-reentrant resources here.
+            // Simulate some work.
+            Thread.Sleep(5000);
 
-        // Simulate some work.
-        Thread.Sleep(500);
+            Console.WriteLine("{0} is leaving the protected area",
+                Thread.CurrentThread.Name);
 
-        Console.WriteLine("{0} is leaving the protected area",
-            Thread.CurrentThread.Name);
-
-        // Release the Mutex.
-        mut.ReleaseMutex();
-        Console.WriteLine("{0} has released the mutex",
-            Thread.CurrentThread.Name);
+            // Release the Mutex.
+            mut.ReleaseMutex();
+            Console.WriteLine("{0} has released the mutex",
+                              Thread.CurrentThread.Name);
+        }
+        else
+        {
+            Console.WriteLine("{0} will not acquire the mutex",
+                              Thread.CurrentThread.Name);
+        }
     }
 
-static void Main()
+    ~Example()
     {
-        for (int i=0; i< numThreads; i++)
+        mut.Dispose();
+    }
+
+    private void StartThreads()
+    {
+        // Create the threads that will use the protected resource.
+        for (int i = 0; i < numThreads; i++)
         {
             Thread newThread = new Thread(new ThreadStart(ThreadProc));
             newThread.Name = String.Format("Thread{0}", i + 1);
             newThread.Start();
         }
+
+        // The main thread returns to Main and exits, but the application continues to
+        // run until all foreground threads have exited.
+    }
+
+    static void Main()
+    {
+        Example ex = new Example();
+        ex.StartThreads();
 
         ServerClass serverObject = new ServerClass();
 
@@ -84,52 +104,7 @@ static void Main()
         while (true)
         {
             Socket clientSocket = serverSocket.Accept();
-            Console.WriteLine("Cliente conectado!");
-
-            byte[] buffer = new byte[1024];
-            int receivedBytes = clientSocket.Receive(buffer);
-            string receivedText = Encoding.UTF8.GetString(buffer, 0, receivedBytes);
-
-            byte[] calculo = new byte[1024];
-            int somaBytes = clientSocket.Receive(calculo);
-            string receivedCalculo = Encoding.UTF8.GetString(calculo, 0, somaBytes);
-            string[] soma = receivedCalculo.Split(" ");
-            if (soma[0] == "SOMA")
-            {
-                int n1 = Convert.ToInt32(soma[1]);
-                int n2 = Convert.ToInt32(soma[2]);
-                string total = Convert.ToString(n1 + n2);
-                byte[] resposta = Encoding.UTF8.GetBytes(total);
-                clientSocket.Send(resposta);
-            }
-            else if (soma[0]== "MUL"){
-                int n1 = Convert.ToInt32(soma[1]);
-                int n2 = Convert.ToInt32(soma[2]);
-                string total = Convert.ToString(n1 * n2);
-                byte[] resposta = Encoding.UTF8.GetBytes(total);
-                clientSocket.Send(resposta);
-            } else if (soma[0] == "SUB")
-            {
-                int n1 = Convert.ToInt32(soma[1]);
-                int n2 = Convert.ToInt32(soma[2]);
-                string total = Convert.ToString(n1 - n2);
-                byte[] resposta = Encoding.UTF8.GetBytes(total);
-                clientSocket.Send(resposta);
-            } else if (soma[0] == "DIV")
-            {
-                int n1 = Convert.ToInt32(soma[1]);
-                int n2 = Convert.ToInt32(soma[2]);
-                string total = Convert.ToString(n1 / n2);
-                byte[] resposta = Encoding.UTF8.GetBytes(total);
-                clientSocket.Send(resposta);
-            } else
-            {
-                string respostaFinal = "ERRO";
-                byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
-                clientSocket.Send(resposta);
-            }
-
-                Console.WriteLine($"Mensagem recebida: {receivedText}");
+            Console.WriteLine("Agregador conectado!");
 
             string response = "Mensagem recebida com sucesso!";
             byte[] responseBytes = Encoding.UTF8.GetBytes(response);

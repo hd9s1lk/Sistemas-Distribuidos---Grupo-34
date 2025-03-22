@@ -17,12 +17,12 @@ class Middleman
         middlemanSocket.Bind(middlemanEndPoint);
         middlemanSocket.Listen(5);
 
-        Console.WriteLine($"Middleman rodando na porta {listenPort}...");
+        Console.WriteLine($"Agregador na porta {listenPort}...");
 
         while (true)
         {
             Socket clientSocket = middlemanSocket.Accept();
-            Console.WriteLine("Cliente conectado ao middleman!");
+            Console.WriteLine("Cliente conectado ao Agregador!");
 
             byte[] buffer = new byte[1024];
             int receivedBytes = clientSocket.Receive(buffer);
@@ -35,14 +35,115 @@ class Middleman
                 serverSocket.Connect(new IPEndPoint(IPAddress.Parse(serverIP), serverPort));
                 serverSocket.Send(buffer, receivedBytes, SocketFlags.None);
 
-                // Receber resposta do servidor
-                byte[] responseBuffer = new byte[1024];
-                int responseBytes = serverSocket.Receive(responseBuffer);
-                string serverResponse = Encoding.UTF8.GetString(responseBuffer, 0, responseBytes);
-                Console.WriteLine($"Resposta do servidor: {serverResponse}");
+                // Receber info do cliente
+                //byte[] responseBuffer = new byte[1024];
+                //int responseBytes = clientSocket.Receive(responseBuffer);
+                //string serverResponse = Encoding.UTF8.GetString(responseBuffer, 0, responseBytes);
+                //Console.WriteLine($"Resposta do cliente: {serverResponse}");
 
-                // Enviar resposta de volta ao cliente
-                clientSocket.Send(responseBuffer, responseBytes, SocketFlags.None);
+
+                //Trocar IP's
+                byte[] calculo = new byte[1024];
+                int somaBytes = clientSocket.Receive(calculo);
+                string receivedCalculo = Encoding.UTF8.GetString(calculo, 0, somaBytes);
+                string[] soma = receivedCalculo.Split(" ");
+                if (soma[0] == "Dados")
+                {
+                    string respostaFinal = "IP AGREGADOR: 127.0.0.1:800";
+                    byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
+                    clientSocket.Send(resposta);
+                } else
+                {
+                    string respostaFinal = "Dados Não Recebidos";
+                    byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
+                    clientSocket.Send(resposta);
+                }
+
+
+                //receber e enviar wavyID
+                byte[] wavyID = new byte[1024];
+                int wavyIDBytes = clientSocket.Receive(wavyID);
+                string wavyIDdados = Encoding.UTF8.GetString(wavyID, 0, wavyIDBytes);
+                string[] wavyIDFINAL = wavyIDdados.Split(":");
+                if (wavyIDFINAL[0] == "WAVY_ID")
+                {
+                    Console.WriteLine($"{wavyIDdados}");
+                    string respostaFinal = wavyIDdados;
+                    byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
+                    clientSocket.Send(resposta);
+                } else
+                {
+                    string respostaFinal = "WavyID não recebida";
+                    byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
+                    clientSocket.Send(resposta);
+                }
+
+
+                //receber e enviar wavyStatus
+                byte[] wavyStatus = new byte[1024];
+                int wavyStatusBytes = clientSocket.Receive(wavyStatus);
+                string wavyStatusdados = Encoding.UTF8.GetString(wavyStatus, 0, wavyStatusBytes);
+                string[] wavyStatusFINAL = wavyStatusdados.Split(":");
+                Console.WriteLine($"{wavyStatusdados}");
+                if (wavyStatusFINAL[0] == "WAVY_ID")
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Deseja mudar o estado?");
+                        var leitura = Console.ReadLine();
+                        if (leitura == "Sim")
+                        {
+                            Console.WriteLine("Escolhe o estado: Associada(1) - Operação(2) - Manutenção(3) - Desativada(4)");
+                            var resp = Console.ReadLine();
+                            string respostaFinal = null;
+                            byte[] answer = null;
+                            switch (resp)
+                            {
+                                case "1":
+                                    wavyStatusFINAL[1] = "Associada";
+                                    Console.WriteLine($"{wavyStatusdados}");
+                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    clientSocket.Send(answer);
+                                    break;
+                                case "2":
+                                    wavyStatusFINAL[1] = "Operação";
+                                    Console.WriteLine($"{wavyStatusdados}");
+                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    clientSocket.Send(answer);
+                                    break;
+                                case "3":
+                                    wavyStatusFINAL[1] = "Manutenção";
+                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    clientSocket.Send(answer);
+                                    break;
+                                case "4":
+                                    wavyStatusFINAL[1] = "Desativada";
+                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    clientSocket.Send(answer);
+                                    break;
+
+                                default:
+                                    continue;
+                            }
+                            break;
+                        } else if (leitura != "Sim")
+                        {
+                            string respostaFinal = "Status sem alteração";
+                            byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
+                            clientSocket.Send(resposta);
+                            break;
+
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    string respostaFinal = "WavyID não recebida";
+                    byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
+                    clientSocket.Send(resposta);
+                }
+
             }
             catch (Exception ex)
             {
