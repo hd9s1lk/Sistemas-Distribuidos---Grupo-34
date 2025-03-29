@@ -10,11 +10,7 @@ public class ServerClass
 {
     public void InstanceMethod()
     {
-        Console.WriteLine("Boas");
-        Console.WriteLine("Vamos");
-        Console.WriteLine("Ganha-la?");
-        Thread.Sleep(3000);
-        Console.WriteLine("O Thread acabou");
+        Console.WriteLine("Conectado!");
     }
 }
 
@@ -103,14 +99,47 @@ class Example
 
         while (true)
         {
+            string filePath = "servidor.txt";
             Socket clientSocket = serverSocket.Accept();
             Console.WriteLine("Agregador conectado!");
 
-            string response = "Mensagem recebida com sucesso!";
-            byte[] responseBytes = Encoding.UTF8.GetBytes(response);
-            clientSocket.Send(responseBytes);
 
-            clientSocket.Close();
+            //IP WAVY
+            byte[] ipwavy = new byte[1024];
+            int ipwavyBytes = clientSocket.Receive(ipwavy);
+            string ipwavydados = Encoding.UTF8.GetString(ipwavy, 0, ipwavyBytes);
+            string[] ipwavyFinal = ipwavydados.Split(":");
+            Console.WriteLine($"{ipwavydados}");
+
+            //recebe wavy id com pre processamento
+            byte[] wavyProcessamento = new byte[1024];
+            int wavyProcessamentoBytes = clientSocket.Receive(wavyProcessamento);
+            string wavyProcessamentoDados = Encoding.UTF8.GetString(wavyProcessamento, 0, wavyProcessamentoBytes);
+            string[] wavyProcessamentoFinal = wavyProcessamentoDados.Split(":");
+            Console.WriteLine($"{wavyProcessamentoDados}");
+
+
+            //Status da Wavy recebido pelo agregador
+            byte[] agregadorStatus = new byte[1024];
+            int agregadorStatusBytes = clientSocket.Receive(agregadorStatus);
+            string agregadorStatusDados = Encoding.UTF8.GetString(agregadorStatus, 0, agregadorStatusBytes);
+            string[] agregadorFinal = agregadorStatusDados.Split(":");
+            Console.WriteLine($"{agregadorStatusDados}");
+
+
+            if (File.Exists(filePath))
+            {
+                Console.WriteLine("Dados guardados no ficheiro");
+                string dados = $"{agregadorStatusDados}{Environment.NewLine}{wavyProcessamentoDados}";
+                File.WriteAllText(filePath, dados);
+            }
+            else
+            {
+                Console.WriteLine("Ficheiro não existe");
+            }
+
+
+
         }
     }
 }

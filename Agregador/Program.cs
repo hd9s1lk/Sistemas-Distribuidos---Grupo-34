@@ -71,6 +71,7 @@ class Middleman
                     string respostaFinal = wavyIDdados;
                     byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
                     clientSocket.Send(resposta);
+                    serverSocket.Send(resposta);
                 } else
                 {
                     string respostaFinal = "WavyID não recebida";
@@ -80,7 +81,7 @@ class Middleman
 
 
                 //receber e enviar wavyStatus
-                byte[] wavyStatus = new byte[1024];
+                byte[] wavyStatus = new byte[1024]; 
                 int wavyStatusBytes = clientSocket.Receive(wavyStatus);
                 string wavyStatusdados = Encoding.UTF8.GetString(wavyStatus, 0, wavyStatusBytes);
                 string[] wavyStatusFINAL = wavyStatusdados.Split(":");
@@ -101,25 +102,36 @@ class Middleman
                             {
                                 case "1":
                                     wavyStatusFINAL[1] = "Associada";
-                                    Console.WriteLine($"{wavyStatusdados}");
-                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    Console.WriteLine($"{wavyStatusFINAL}");
+                                    string answer1 = String.Join(":", wavyStatusFINAL);
+                                    answer = Encoding.UTF8.GetBytes(answer1);
                                     clientSocket.Send(answer);
+                                    Console.WriteLine("Estado alterado: " + answer1);
+                                    serverSocket.Send(answer);
                                     break;
                                 case "2":
                                     wavyStatusFINAL[1] = "Operação";
-                                    Console.WriteLine($"{wavyStatusdados}");
-                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    string answer2 = String.Join(":", wavyStatusFINAL);
+                                    answer = Encoding.UTF8.GetBytes(answer2);
                                     clientSocket.Send(answer);
+                                    Console.WriteLine("Estado alterado " + answer2);
+                                    serverSocket.Send(answer);
                                     break;
                                 case "3":
                                     wavyStatusFINAL[1] = "Manutenção";
-                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    string answer3 = String.Join(":", wavyStatusFINAL);
+                                    answer = Encoding.UTF8.GetBytes(answer3);
                                     clientSocket.Send(answer);
+                                    Console.WriteLine("Estado alterado " + answer3);
+                                    serverSocket.Send(answer);
                                     break;
                                 case "4":
                                     wavyStatusFINAL[1] = "Desativada";
-                                    answer = Encoding.UTF8.GetBytes(wavyStatusdados);
+                                    string answer4 = String.Join(":", wavyStatusFINAL);
+                                    answer = Encoding.UTF8.GetBytes(answer4);
                                     clientSocket.Send(answer);
+                                    Console.WriteLine("Estado alterado " + answer4);
+                                    serverSocket.Send(answer);
                                     break;
 
                                 default:
@@ -128,7 +140,7 @@ class Middleman
                             break;
                         } else if (leitura != "Sim")
                         {
-                            string respostaFinal = "Status sem alteração";
+                            string respostaFinal = wavyStatusdados;
                             byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
                             clientSocket.Send(resposta);
                             break;

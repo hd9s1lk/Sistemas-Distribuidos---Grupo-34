@@ -59,9 +59,6 @@ class SocketClient
             Console.WriteLine($"{wavyStatusTEXT}");
 
 
-
-
-
             clientSocket.Close();
         }
         catch (Exception ex)

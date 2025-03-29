@@ -1,0 +1,2 @@
+WAVY_ID:Operação:[data_types]:last_sync
+WAVY_ID:pré_processamento:volume_dados_enviar:servidor_associado
