@@ -111,6 +111,13 @@ class Example
             string[] ipwavyFinal = ipwavydados.Split(":");
             Console.WriteLine($"{ipwavydados}");
 
+            //IP Agregador
+            byte[] ipAgregador = new byte[1024];
+            int ipAgregadorBytes = clientSocket.Receive(ipAgregador);
+            string ipAgregadorDados = Encoding.UTF8.GetString(ipAgregador, 0, ipAgregadorBytes);
+            Console.WriteLine($"{ipAgregadorDados}");
+
+
             //recebe wavy id com pre processamento
             byte[] wavyProcessamento = new byte[1024];
             int wavyProcessamentoBytes = clientSocket.Receive(wavyProcessamento);
@@ -130,7 +137,7 @@ class Example
             if (File.Exists(filePath))
             {
                 Console.WriteLine("Dados guardados no ficheiro");
-                string dados = $"{agregadorStatusDados}{Environment.NewLine}{wavyProcessamentoDados}";
+                string dados = $"{ipwavydados}{Environment.NewLine}{ipAgregadorDados}{Environment.NewLine}{agregadorStatusDados}{Environment.NewLine}{wavyProcessamentoDados}";
                 File.WriteAllText(filePath, dados);
             }
             else

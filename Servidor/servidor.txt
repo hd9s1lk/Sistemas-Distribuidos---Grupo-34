@@ -1,2 +1,5 @@
-WAVY_ID:Operação:[data_types]:last_sync
-WAVY_ID:pré_processamento:volume_dados_enviar:servidor_associado
+IP WAVY: 127.0.0.1:9000
+IP AGREGADOR: 127.0.0.1:800
+3456:JSON FILE:450MB:127.0.0.1:800
+
+3456:Operação:Objeto JSON:05/04/2025

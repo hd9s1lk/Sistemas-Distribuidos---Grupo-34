@@ -52,6 +52,7 @@ class Middleman
                     string respostaFinal = "IP AGREGADOR: 127.0.0.1:800";
                     byte[] resposta = Encoding.UTF8.GetBytes(respostaFinal);
                     clientSocket.Send(resposta);
+                    serverSocket.Send(resposta);
                 } else
                 {
                     string respostaFinal = "Dados Não Recebidos";
@@ -64,8 +65,12 @@ class Middleman
                 byte[] wavyID = new byte[1024];
                 int wavyIDBytes = clientSocket.Receive(wavyID);
                 string wavyIDdados = Encoding.UTF8.GetString(wavyID, 0, wavyIDBytes);
+
+                //trabalhar o wavyID
+
+
                 string[] wavyIDFINAL = wavyIDdados.Split(":");
-                if (wavyIDFINAL[0] == "WAVY_ID")
+                if (wavyIDFINAL[0] == "WAVY_ID[1]" || wavyIDFINAL[0] == "WAVY_ID[2]" || wavyIDFINAL[0] == "WAVY_ID[1234]" || wavyIDFINAL[0] == "3456")
                 {
                     Console.WriteLine($"{wavyIDdados}");
                     string respostaFinal = wavyIDdados;
@@ -84,9 +89,14 @@ class Middleman
                 byte[] wavyStatus = new byte[1024]; 
                 int wavyStatusBytes = clientSocket.Receive(wavyStatus);
                 string wavyStatusdados = Encoding.UTF8.GetString(wavyStatus, 0, wavyStatusBytes);
+
+                //Trabalhar wavyStatusDados
+
+
+
                 string[] wavyStatusFINAL = wavyStatusdados.Split(":");
                 Console.WriteLine($"{wavyStatusdados}");
-                if (wavyStatusFINAL[0] == "WAVY_ID")
+                if (wavyStatusFINAL[0] == "WAVY_ID[1]" || wavyStatusFINAL[0] == "WAVY_ID[2]" || wavyStatusFINAL[0] == "WAVY_ID[1234]" || wavyStatusFINAL[0] == "3456")
                 {
                     while (true)
                     {
