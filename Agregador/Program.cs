@@ -27,19 +27,13 @@ class Middleman
             byte[] buffer = new byte[1024];
             int receivedBytes = clientSocket.Receive(buffer);
             string receivedText = Encoding.UTF8.GetString(buffer, 0, receivedBytes);
-            Console.WriteLine($"Mensagem recebida do cliente: {receivedText}");
+            Console.WriteLine($"Mensagem recebida da wavy (IP WAVY):Sim {receivedText}");
 
             Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
                 serverSocket.Connect(new IPEndPoint(IPAddress.Parse(serverIP), serverPort));
                 serverSocket.Send(buffer, receivedBytes, SocketFlags.None);
-
-                // Receber info do cliente
-                //byte[] responseBuffer = new byte[1024];
-                //int responseBytes = clientSocket.Receive(responseBuffer);
-                //string serverResponse = Encoding.UTF8.GetString(responseBuffer, 0, responseBytes);
-                //Console.WriteLine($"Resposta do cliente: {serverResponse}");
 
 
                 //Trocar IP's

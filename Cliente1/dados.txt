@@ -1,2 +1,2 @@
 WAVY_ID[2]:Leitura_Ficheiro_TXT:200MB:127.0.0.1:800
-WAVY_ID[2]:status:Strings:03/04/2025
+WAVY_ID[2]:Desativada:Strings:03/04/2025

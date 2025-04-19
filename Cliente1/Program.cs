@@ -32,11 +32,15 @@ class SocketClient
         try
         {
             clientSocket.Connect(endPoint);
-            Console.WriteLine("Conectado ao Agregador com Protocolo TCP na porta 9000");
 
             //ENVIO DE IP
-            string message = "IP WAVY: 127.0.0.1:9000";
-            byte[] messageBytes = Encoding.UTF8.GetBytes(message);
+            Console.WriteLine("IP WAVY:");
+            string IP = Console.ReadLine();
+
+
+            
+            Console.WriteLine("Conectado ao Agregador com Protocolo TCP na porta 9000");
+            byte[] messageBytes = Encoding.UTF8.GetBytes(IP);
             clientSocket.Send(messageBytes);
 
             //TROCA DE IP
