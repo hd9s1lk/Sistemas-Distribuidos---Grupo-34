@@ -42,3 +42,8 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.pdb
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.genruntimeconfig.cache
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\ref\Cliente.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\System.Threading.RateLimiting.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.csproj.AssemblyReference.cache
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.csproj.Up2Date

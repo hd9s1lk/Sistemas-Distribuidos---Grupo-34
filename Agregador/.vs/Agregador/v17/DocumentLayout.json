@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Agregador\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AF376544-F209-4D65-B902-286DC27F2E73}|Agregador.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\agregador\\rabbitmqagregador\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF376544-F209-4D65-B902-286DC27F2E73}|Agregador.csproj|solutionrelative:rabbitmqagregador\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AF376544-F209-4D65-B902-286DC27F2E73}|Agregador.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\agregador\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AF376544-F209-4D65-B902-286DC27F2E73}|Agregador.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -20,14 +24,26 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Agregador\\RabbitMQAgregador\\Program.cs",
+              "RelativeDocumentMoniker": "RabbitMQAgregador\\Program.cs",
+              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Agregador\\RabbitMQAgregador\\Program.cs",
+              "RelativeToolTip": "RabbitMQAgregador\\Program.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwEMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T13:47:57.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Agregador\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Agregador\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAAAH8AAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T00:22:18.94Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T00:22:18.94Z"
             }
           ]
         }

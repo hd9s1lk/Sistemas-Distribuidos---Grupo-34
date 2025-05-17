@@ -7,7 +7,7 @@ class Middleman
 {
     static void Main()
     {
-        int listenPort = 9000; 
+        int listenPort = 9000;
         string serverIP = "127.0.0.1";
         int serverPort = 800;
 
