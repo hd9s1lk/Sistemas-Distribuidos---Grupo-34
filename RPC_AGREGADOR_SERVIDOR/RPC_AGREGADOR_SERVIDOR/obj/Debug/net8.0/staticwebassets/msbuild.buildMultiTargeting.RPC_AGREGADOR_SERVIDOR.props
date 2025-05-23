@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\RPC_AGREGADOR_SERVIDOR.props" />
+</Project>

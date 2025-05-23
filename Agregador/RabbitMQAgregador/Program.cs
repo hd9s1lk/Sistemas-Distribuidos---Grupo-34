@@ -1,10 +1,22 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using System.Threading.Tasks;
+using Grpc.Net.Client;
+using AgregadorClient;
+
 
 var factory = new ConnectionFactory { HostName = "localhost" };
 using var connection = await factory.CreateConnectionAsync();
 using var channel = await connection.CreateChannelAsync();
+
+//RPC
+using var channelRPC = GrpcChannel.ForAddress("http://localhost:5062");
+var client = new Greeter.GreeterClient(channelRPC);
+var reply = await client.SayHelloAsync(new HelloRequest { Name = "AgregadorClient" });
+
+Console.WriteLine("Boas: (MENSAGEM RPC)" + reply.Message);
+
 
 await channel.QueueDeclareAsync(queue: "hello", durable: false, exclusive: false, autoDelete: false,
     arguments: null);

@@ -18,3 +18,8 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregad
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\bin\Debug\net8.0\System.Threading.RateLimiting.dll
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\obj\Debug\net8.0\Agregador.csproj.AssemblyReference.cache
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\obj\Debug\net8.0\Agregador.csproj.Up2Date
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\bin\Debug\net8.0\Google.Protobuf.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\bin\Debug\net8.0\Grpc.Core.Api.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\bin\Debug\net8.0\Grpc.Net.Common.dll
+C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Agregador\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
