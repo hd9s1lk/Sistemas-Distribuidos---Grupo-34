@@ -25,15 +25,23 @@ namespace RPC_AGREGADOR_SERVIDOR {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJQcm90b3MvZ3JlZXQucHJvdG8SBWdyZWV0IhwKDEhlbGxvUmVxdWVzdBIM",
-            "CgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCTI9",
-            "CgdHcmVldGVyEjIKCFNheUhlbGxvEhMuZ3JlZXQuSGVsbG9SZXF1ZXN0GhEu",
-            "Z3JlZXQuSGVsbG9SZXBseUIZqgIWUlBDX0FHUkVHQURPUl9TRVJWSURPUmIG",
-            "cHJvdG8z"));
+            "CgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCSJo",
+            "CgZ3YXZ5SUQSCgoCSUQYASABKAkSGQoRUHJlX1Byb2Nlc3NhbWVudG8YAiAB",
+            "KAkSGwoTVm9sdW1lX0RhZG9zX0VudmlhchgDIAEoCRIaChJTZXJ2aWRvcl9B",
+            "c3NvY2lhZG8YBCABKAkifwoLd2F2eUlEUmVwbHkSEgoKSURyZWNlYmlkYRgB",
+            "IAEoCRIhChlQcmVfUHJvY2Vzc2FtZW50b1JlY2ViaWRvGAIgASgJEh0KFVZv",
+            "bHVtZV9EYWRvc19SZWNlYmlkbxgDIAEoCRIaChJTZXJ2aWRvcl9Bc3NvY2lh",
+            "ZG8YBCABKAkybAoHR3JlZXRlchIyCghTYXlIZWxsbxITLmdyZWV0LkhlbGxv",
+            "UmVxdWVzdBoRLmdyZWV0LkhlbGxvUmVwbHkSLQoITWFuZGFySUQSDS5ncmVl",
+            "dC53YXZ5SUQaEi5ncmVldC53YXZ5SURSZXBseUIZqgIWUlBDX0FHUkVHQURP",
+            "Ul9TRVJWSURPUmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::RPC_AGREGADOR_SERVIDOR.HelloRequest), global::RPC_AGREGADOR_SERVIDOR.HelloRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::RPC_AGREGADOR_SERVIDOR.HelloReply), global::RPC_AGREGADOR_SERVIDOR.HelloReply.Parser, new[]{ "Message" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::RPC_AGREGADOR_SERVIDOR.HelloReply), global::RPC_AGREGADOR_SERVIDOR.HelloReply.Parser, new[]{ "Message" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RPC_AGREGADOR_SERVIDOR.wavyID), global::RPC_AGREGADOR_SERVIDOR.wavyID.Parser, new[]{ "ID", "PreProcessamento", "VolumeDadosEnviar", "ServidorAssociado" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::RPC_AGREGADOR_SERVIDOR.wavyIDReply), global::RPC_AGREGADOR_SERVIDOR.wavyIDReply.Parser, new[]{ "IDrecebida", "PreProcessamentoRecebido", "VolumeDadosRecebido", "ServidorAssociado" }, null, null, null, null)
           }));
     }
     #endregion
@@ -415,6 +423,606 @@ namespace RPC_AGREGADOR_SERVIDOR {
             break;
           case 10: {
             Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class wavyID : pb::IMessage<wavyID>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<wavyID> _parser = new pb::MessageParser<wavyID>(() => new wavyID());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<wavyID> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::RPC_AGREGADOR_SERVIDOR.GreetReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public wavyID() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public wavyID(wavyID other) : this() {
+      iD_ = other.iD_;
+      preProcessamento_ = other.preProcessamento_;
+      volumeDadosEnviar_ = other.volumeDadosEnviar_;
+      servidorAssociado_ = other.servidorAssociado_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public wavyID Clone() {
+      return new wavyID(this);
+    }
+
+    /// <summary>Field number for the "ID" field.</summary>
+    public const int IDFieldNumber = 1;
+    private string iD_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ID {
+      get { return iD_; }
+      set {
+        iD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Pre_Processamento" field.</summary>
+    public const int PreProcessamentoFieldNumber = 2;
+    private string preProcessamento_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PreProcessamento {
+      get { return preProcessamento_; }
+      set {
+        preProcessamento_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Volume_Dados_Enviar" field.</summary>
+    public const int VolumeDadosEnviarFieldNumber = 3;
+    private string volumeDadosEnviar_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string VolumeDadosEnviar {
+      get { return volumeDadosEnviar_; }
+      set {
+        volumeDadosEnviar_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Servidor_Associado" field.</summary>
+    public const int ServidorAssociadoFieldNumber = 4;
+    private string servidorAssociado_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ServidorAssociado {
+      get { return servidorAssociado_; }
+      set {
+        servidorAssociado_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as wavyID);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(wavyID other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ID != other.ID) return false;
+      if (PreProcessamento != other.PreProcessamento) return false;
+      if (VolumeDadosEnviar != other.VolumeDadosEnviar) return false;
+      if (ServidorAssociado != other.ServidorAssociado) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ID.Length != 0) hash ^= ID.GetHashCode();
+      if (PreProcessamento.Length != 0) hash ^= PreProcessamento.GetHashCode();
+      if (VolumeDadosEnviar.Length != 0) hash ^= VolumeDadosEnviar.GetHashCode();
+      if (ServidorAssociado.Length != 0) hash ^= ServidorAssociado.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ID.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ID);
+      }
+      if (PreProcessamento.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PreProcessamento);
+      }
+      if (VolumeDadosEnviar.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VolumeDadosEnviar);
+      }
+      if (ServidorAssociado.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ServidorAssociado);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ID.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ID);
+      }
+      if (PreProcessamento.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PreProcessamento);
+      }
+      if (VolumeDadosEnviar.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VolumeDadosEnviar);
+      }
+      if (ServidorAssociado.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ServidorAssociado);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ID.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ID);
+      }
+      if (PreProcessamento.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PreProcessamento);
+      }
+      if (VolumeDadosEnviar.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(VolumeDadosEnviar);
+      }
+      if (ServidorAssociado.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ServidorAssociado);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(wavyID other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ID.Length != 0) {
+        ID = other.ID;
+      }
+      if (other.PreProcessamento.Length != 0) {
+        PreProcessamento = other.PreProcessamento;
+      }
+      if (other.VolumeDadosEnviar.Length != 0) {
+        VolumeDadosEnviar = other.VolumeDadosEnviar;
+      }
+      if (other.ServidorAssociado.Length != 0) {
+        ServidorAssociado = other.ServidorAssociado;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ID = input.ReadString();
+            break;
+          }
+          case 18: {
+            PreProcessamento = input.ReadString();
+            break;
+          }
+          case 26: {
+            VolumeDadosEnviar = input.ReadString();
+            break;
+          }
+          case 34: {
+            ServidorAssociado = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ID = input.ReadString();
+            break;
+          }
+          case 18: {
+            PreProcessamento = input.ReadString();
+            break;
+          }
+          case 26: {
+            VolumeDadosEnviar = input.ReadString();
+            break;
+          }
+          case 34: {
+            ServidorAssociado = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class wavyIDReply : pb::IMessage<wavyIDReply>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<wavyIDReply> _parser = new pb::MessageParser<wavyIDReply>(() => new wavyIDReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<wavyIDReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::RPC_AGREGADOR_SERVIDOR.GreetReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public wavyIDReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public wavyIDReply(wavyIDReply other) : this() {
+      iDrecebida_ = other.iDrecebida_;
+      preProcessamentoRecebido_ = other.preProcessamentoRecebido_;
+      volumeDadosRecebido_ = other.volumeDadosRecebido_;
+      servidorAssociado_ = other.servidorAssociado_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public wavyIDReply Clone() {
+      return new wavyIDReply(this);
+    }
+
+    /// <summary>Field number for the "IDrecebida" field.</summary>
+    public const int IDrecebidaFieldNumber = 1;
+    private string iDrecebida_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string IDrecebida {
+      get { return iDrecebida_; }
+      set {
+        iDrecebida_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Pre_ProcessamentoRecebido" field.</summary>
+    public const int PreProcessamentoRecebidoFieldNumber = 2;
+    private string preProcessamentoRecebido_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PreProcessamentoRecebido {
+      get { return preProcessamentoRecebido_; }
+      set {
+        preProcessamentoRecebido_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Volume_Dados_Recebido" field.</summary>
+    public const int VolumeDadosRecebidoFieldNumber = 3;
+    private string volumeDadosRecebido_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string VolumeDadosRecebido {
+      get { return volumeDadosRecebido_; }
+      set {
+        volumeDadosRecebido_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Servidor_Associado" field.</summary>
+    public const int ServidorAssociadoFieldNumber = 4;
+    private string servidorAssociado_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ServidorAssociado {
+      get { return servidorAssociado_; }
+      set {
+        servidorAssociado_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as wavyIDReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(wavyIDReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (IDrecebida != other.IDrecebida) return false;
+      if (PreProcessamentoRecebido != other.PreProcessamentoRecebido) return false;
+      if (VolumeDadosRecebido != other.VolumeDadosRecebido) return false;
+      if (ServidorAssociado != other.ServidorAssociado) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (IDrecebida.Length != 0) hash ^= IDrecebida.GetHashCode();
+      if (PreProcessamentoRecebido.Length != 0) hash ^= PreProcessamentoRecebido.GetHashCode();
+      if (VolumeDadosRecebido.Length != 0) hash ^= VolumeDadosRecebido.GetHashCode();
+      if (ServidorAssociado.Length != 0) hash ^= ServidorAssociado.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (IDrecebida.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(IDrecebida);
+      }
+      if (PreProcessamentoRecebido.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PreProcessamentoRecebido);
+      }
+      if (VolumeDadosRecebido.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VolumeDadosRecebido);
+      }
+      if (ServidorAssociado.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ServidorAssociado);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (IDrecebida.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(IDrecebida);
+      }
+      if (PreProcessamentoRecebido.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(PreProcessamentoRecebido);
+      }
+      if (VolumeDadosRecebido.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(VolumeDadosRecebido);
+      }
+      if (ServidorAssociado.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ServidorAssociado);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (IDrecebida.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IDrecebida);
+      }
+      if (PreProcessamentoRecebido.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PreProcessamentoRecebido);
+      }
+      if (VolumeDadosRecebido.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(VolumeDadosRecebido);
+      }
+      if (ServidorAssociado.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ServidorAssociado);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(wavyIDReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.IDrecebida.Length != 0) {
+        IDrecebida = other.IDrecebida;
+      }
+      if (other.PreProcessamentoRecebido.Length != 0) {
+        PreProcessamentoRecebido = other.PreProcessamentoRecebido;
+      }
+      if (other.VolumeDadosRecebido.Length != 0) {
+        VolumeDadosRecebido = other.VolumeDadosRecebido;
+      }
+      if (other.ServidorAssociado.Length != 0) {
+        ServidorAssociado = other.ServidorAssociado;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            IDrecebida = input.ReadString();
+            break;
+          }
+          case 18: {
+            PreProcessamentoRecebido = input.ReadString();
+            break;
+          }
+          case 26: {
+            VolumeDadosRecebido = input.ReadString();
+            break;
+          }
+          case 34: {
+            ServidorAssociado = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            IDrecebida = input.ReadString();
+            break;
+          }
+          case 18: {
+            PreProcessamentoRecebido = input.ReadString();
+            break;
+          }
+          case 26: {
+            VolumeDadosRecebido = input.ReadString();
+            break;
+          }
+          case 34: {
+            ServidorAssociado = input.ReadString();
             break;
           }
         }

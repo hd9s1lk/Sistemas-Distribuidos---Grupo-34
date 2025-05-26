@@ -52,6 +52,10 @@ namespace RPC_AGREGADOR_SERVIDOR {
     static readonly grpc::Marshaller<global::RPC_AGREGADOR_SERVIDOR.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RPC_AGREGADOR_SERVIDOR.HelloRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::RPC_AGREGADOR_SERVIDOR.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RPC_AGREGADOR_SERVIDOR.HelloReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::RPC_AGREGADOR_SERVIDOR.wavyID> __Marshaller_greet_wavyID = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RPC_AGREGADOR_SERVIDOR.wavyID.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::RPC_AGREGADOR_SERVIDOR.wavyIDReply> __Marshaller_greet_wavyIDReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::RPC_AGREGADOR_SERVIDOR.wavyIDReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::RPC_AGREGADOR_SERVIDOR.HelloRequest, global::RPC_AGREGADOR_SERVIDOR.HelloReply> __Method_SayHello = new grpc::Method<global::RPC_AGREGADOR_SERVIDOR.HelloRequest, global::RPC_AGREGADOR_SERVIDOR.HelloReply>(
@@ -60,6 +64,14 @@ namespace RPC_AGREGADOR_SERVIDOR {
         "SayHello",
         __Marshaller_greet_HelloRequest,
         __Marshaller_greet_HelloReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::RPC_AGREGADOR_SERVIDOR.wavyID, global::RPC_AGREGADOR_SERVIDOR.wavyIDReply> __Method_MandarID = new grpc::Method<global::RPC_AGREGADOR_SERVIDOR.wavyID, global::RPC_AGREGADOR_SERVIDOR.wavyIDReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "MandarID",
+        __Marshaller_greet_wavyID,
+        __Marshaller_greet_wavyIDReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -83,6 +95,12 @@ namespace RPC_AGREGADOR_SERVIDOR {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::RPC_AGREGADOR_SERVIDOR.wavyIDReply> MandarID(global::RPC_AGREGADOR_SERVIDOR.wavyID request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -91,7 +109,8 @@ namespace RPC_AGREGADOR_SERVIDOR {
     public static grpc::ServerServiceDefinition BindService(GreeterBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_SayHello, serviceImpl.SayHello).Build();
+          .AddMethod(__Method_SayHello, serviceImpl.SayHello)
+          .AddMethod(__Method_MandarID, serviceImpl.MandarID).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -102,6 +121,7 @@ namespace RPC_AGREGADOR_SERVIDOR {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, GreeterBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_SayHello, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::RPC_AGREGADOR_SERVIDOR.HelloRequest, global::RPC_AGREGADOR_SERVIDOR.HelloReply>(serviceImpl.SayHello));
+      serviceBinder.AddMethod(__Method_MandarID, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::RPC_AGREGADOR_SERVIDOR.wavyID, global::RPC_AGREGADOR_SERVIDOR.wavyIDReply>(serviceImpl.MandarID));
     }
 
   }

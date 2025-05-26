@@ -52,6 +52,10 @@ namespace AgregadorClient {
     static readonly grpc::Marshaller<global::AgregadorClient.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AgregadorClient.HelloRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::AgregadorClient.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AgregadorClient.HelloReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::AgregadorClient.wavyID> __Marshaller_greet_wavyID = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AgregadorClient.wavyID.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::AgregadorClient.wavyIDReply> __Marshaller_greet_wavyIDReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AgregadorClient.wavyIDReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::AgregadorClient.HelloRequest, global::AgregadorClient.HelloReply> __Method_SayHello = new grpc::Method<global::AgregadorClient.HelloRequest, global::AgregadorClient.HelloReply>(
@@ -60,6 +64,14 @@ namespace AgregadorClient {
         "SayHello",
         __Marshaller_greet_HelloRequest,
         __Marshaller_greet_HelloReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::AgregadorClient.wavyID, global::AgregadorClient.wavyIDReply> __Method_MandarID = new grpc::Method<global::AgregadorClient.wavyID, global::AgregadorClient.wavyIDReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "MandarID",
+        __Marshaller_greet_wavyID,
+        __Marshaller_greet_wavyIDReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -141,6 +153,26 @@ namespace AgregadorClient {
       public virtual grpc::AsyncUnaryCall<global::AgregadorClient.HelloReply> SayHelloAsync(global::AgregadorClient.HelloRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_SayHello, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::AgregadorClient.wavyIDReply MandarID(global::AgregadorClient.wavyID request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MandarID(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::AgregadorClient.wavyIDReply MandarID(global::AgregadorClient.wavyID request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_MandarID, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::AgregadorClient.wavyIDReply> MandarIDAsync(global::AgregadorClient.wavyID request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MandarIDAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::AgregadorClient.wavyIDReply> MandarIDAsync(global::AgregadorClient.wavyID request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_MandarID, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

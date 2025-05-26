@@ -18,6 +18,17 @@ public class GreeterService : Greeter.GreeterBase
             Message = "Hello " + request.Name
         });
     }
+
+    public override Task<wavyIDReply> MandarID(wavyID request, ServerCallContext context)
+    {
+        return Task.FromResult(new wavyIDReply
+        {
+            IDrecebida = request.ID,
+            PreProcessamentoRecebido = request.PreProcessamento,
+            VolumeDadosRecebido = request.VolumeDadosEnviar,
+            ServidorAssociado = request.ServidorAssociado
+        });
+    }
 }
 
 

@@ -4,6 +4,17 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using Grpc.Net.Client;
+using System.Threading.Tasks;
+using Servidor;
+
+using var channel = GrpcChannel.ForAddress("http://localhost:5067");
+var client = new Greeter.GreeterClient(channel);
+var reply = await client.SayHelloAsync(new HelloRequest { Name = "Servidor" });
+
+
+Console.WriteLine("Boas: " + reply.Message);
+Console.ReadKey();
 
 
 public class ServerClass

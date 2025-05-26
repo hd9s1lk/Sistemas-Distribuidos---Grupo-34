@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\servidor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\servidor\\servidor.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|solutionrelative:servidor.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\servidor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\servidor\\protos\\greet.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{E10002C6-2110-431A-B5AC-6FB3576460CB}|Servidor.csproj|solutionrelative:protos\\greet.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +22,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "greet.proto",
+              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Protos\\greet.proto",
+              "RelativeDocumentMoniker": "Protos\\greet.proto",
+              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Protos\\greet.proto",
+              "RelativeToolTip": "Protos\\greet.proto",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
+              "WhenOpened": "2025-05-26T13:34:19.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T15:13:36.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "servidor.txt",
               "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\servidor.txt",
               "RelativeDocumentMoniker": "servidor.txt",
@@ -31,19 +61,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-05-17T15:21:03.017Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAFMAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T15:13:36.288Z",
               "EditorCaption": ""
             }
           ]

@@ -30,7 +30,6 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGR
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.RPC_AGREGADOR_SERVIDOR.props
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.RPC_AGREGADOR_SERVIDOR.props
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\RPC_AGRE.E0D8815F.Up2Date
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\RPC_AGREGADOR_SERVIDOR.dll
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_AGREGADOR_SERVIDOR\RPC_AGREGADOR_SERVIDOR\obj\Debug\net8.0\refint\RPC_AGREGADOR_SERVIDOR.dll
