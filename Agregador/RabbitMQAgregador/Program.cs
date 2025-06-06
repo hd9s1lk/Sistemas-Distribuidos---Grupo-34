@@ -7,6 +7,7 @@ using AgregadorClient;
 using System.Net.Sockets;
 using System.Net;
 using Google.Protobuf;
+using System.Security.AccessControl;
 
 
 var factory = new ConnectionFactory { HostName = "localhost" };
@@ -28,7 +29,9 @@ middlemanSocket.Listen(5);
 //conexão com sv
 
 Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-serverSocket.Connect(new IPEndPoint(IPAddress.Parse(serverIP), serverPort));
+serverSocket.Connect("127.0.0.1", 800);
+Console.WriteLine("Conectado ao servidor");
+
 
 
 
@@ -85,7 +88,6 @@ consumer.ReceivedAsync += (model, ea) =>
 };
 
 
-
 await channel.BasicConsumeAsync("hello", autoAck: true, consumer: consumer);
 
 
@@ -134,6 +136,7 @@ consumer3.ReceivedAsync += (model, ea) =>
             " [Pre_Processamento] -> " + replyProcessamentoTXT +
             " [Volume_Dados] -> " + replyDadosTXT +
             " [Servidor] -> " + replyServidorTXT);
+        serverSocket.Send(resposta);
     } else if (IDcompleto[1] == "Ficheiro_CSV")
     {
         Console.WriteLine($" [x] Received ID:{message3}");
@@ -141,6 +144,7 @@ consumer3.ReceivedAsync += (model, ea) =>
             " [Pre_Processamento] -> " + replyProcessamentoCSV +
             " [Volume_Dados] -> " + replyDadosCSV +
             " [Servidor] -> " + replyServidorCSV);
+        serverSocket.Send(resposta);
     } else if (IDcompleto[1] == "JSON FILE")
     {
         Console.WriteLine($" [x] Received ID:{message3}");
@@ -148,6 +152,7 @@ consumer3.ReceivedAsync += (model, ea) =>
             " [Pre_Processamento] -> " + replyProcessamentoJSON +
             " [Volume_Dados] -> " + replyDadosJSON +
             " [Servidor] -> " + replyServidorJSON);
+        serverSocket.Send(resposta);
     } else
     {
         Console.WriteLine("erro");
@@ -157,7 +162,6 @@ consumer3.ReceivedAsync += (model, ea) =>
 };
 
 await channel.BasicConsumeAsync("ID", autoAck: true, consumer: consumer3);
-
 
 //receber STATUS
 

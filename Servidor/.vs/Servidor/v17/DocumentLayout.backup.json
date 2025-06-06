@@ -32,10 +32,9 @@
               "RelativeDocumentMoniker": "Protos\\greet.proto",
               "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Protos\\greet.proto",
               "RelativeToolTip": "Protos\\greet.proto",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-05-26T13:34:19.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T13:34:19.987Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAKoAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T15:13:36.288Z",
               "EditorCaption": ""
@@ -58,10 +57,9 @@
               "RelativeDocumentMoniker": "servidor.txt",
               "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\servidor.txt",
               "RelativeToolTip": "servidor.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-05-17T15:21:03.017Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T15:21:03.017Z"
             }
           ]
         }

@@ -7,15 +7,7 @@ using System.Threading;
 using Grpc.Net.Client;
 using System.Threading.Tasks;
 using Servidor;
-
-using var channel = GrpcChannel.ForAddress("http://localhost:5067");
-var client = new Greeter.GreeterClient(channel);
-var reply = await client.SayHelloAsync(new HelloRequest { Name = "Servidor" });
-
-
-Console.WriteLine("Boas: " + reply.Message);
-Console.ReadKey();
-
+using Microsoft.Data.SqlClient;
 
 public class ServerClass
 {
@@ -89,6 +81,15 @@ class Example
 
     static void Main()
     {
+
+        using var channel = GrpcChannel.ForAddress("http://localhost:5067");
+        var client = new Greeter.GreeterClient(channel);
+        var reply = client.SayHelloAsync(new HelloRequest { Name = "Servidor" });
+
+
+        Console.WriteLine("Conectado ao RPC");
+
+
         Example ex = new Example();
         ex.StartThreads();
 
@@ -105,7 +106,6 @@ class Example
         Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         serverSocket.Bind(endPoint);
         serverSocket.Listen(5);
-
         Console.WriteLine($"Servidor a rodar na porta {port}...");
 
         while (true)
@@ -120,13 +120,8 @@ class Example
             int ipwavyBytes = clientSocket.Receive(ipwavy);
             string ipwavydados = Encoding.UTF8.GetString(ipwavy, 0, ipwavyBytes);
             string[] ipwavyFinal = ipwavydados.Split(":");
+            string ipwavySQL = ipwavyFinal[1];
             Console.WriteLine($"{ipwavydados}");
-
-            //IP Agregador
-            byte[] ipAgregador = new byte[1024];
-            int ipAgregadorBytes = clientSocket.Receive(ipAgregador);
-            string ipAgregadorDados = Encoding.UTF8.GetString(ipAgregador, 0, ipAgregadorBytes);
-            Console.WriteLine($"{ipAgregadorDados}");
 
 
             //recebe wavy id com pre processamento
@@ -134,6 +129,7 @@ class Example
             int wavyProcessamentoBytes = clientSocket.Receive(wavyProcessamento);
             string wavyProcessamentoDados = Encoding.UTF8.GetString(wavyProcessamento, 0, wavyProcessamentoBytes);
             string[] wavyProcessamentoFinal = wavyProcessamentoDados.Split(":");
+            string wavyProcessamentoSQL = wavyProcessamentoFinal[1];
             Console.WriteLine($"{wavyProcessamentoDados}");
 
 
@@ -142,13 +138,14 @@ class Example
             int agregadorStatusBytes = clientSocket.Receive(agregadorStatus);
             string agregadorStatusDados = Encoding.UTF8.GetString(agregadorStatus, 0, agregadorStatusBytes);
             string[] agregadorFinal = agregadorStatusDados.Split(":");
+            string agregadorStatusSQL = agregadorFinal[1];
             Console.WriteLine($"{agregadorStatusDados}");
 
 
             if (File.Exists(filePath))
             {
                 Console.WriteLine("Dados guardados no ficheiro");
-                string dados = $"{ipwavydados}{Environment.NewLine}{ipAgregadorDados}{Environment.NewLine}{agregadorStatusDados}{Environment.NewLine}{wavyProcessamentoDados}";
+                string dados = $"{ipwavydados}{Environment.NewLine}{agregadorStatusDados}{Environment.NewLine}{wavyProcessamentoDados}";
                 File.WriteAllText(filePath, dados);
             }
             else
@@ -156,6 +153,27 @@ class Example
                 Console.WriteLine("Ficheiro não existe");
             }
 
+
+            string connectionString = "Server=localhost;Database=SD;Trusted_Connection=True;";
+            
+
+          
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO DadosAgregador (IPWavy, WavyProcessamento) " +
+                               "VALUES (@IPWavy, @WavyProc)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@IPWavy", ipwavySQL);
+                    command.Parameters.AddWithValue("@WavyProc", wavyProcessamentoSQL);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Dados inseridos na base de dados.");
+                }
+            }
 
 
         }
