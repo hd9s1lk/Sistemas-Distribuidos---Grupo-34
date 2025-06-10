@@ -119,9 +119,7 @@ class Example
             byte[] ipwavy = new byte[1024];
             int ipwavyBytes = clientSocket.Receive(ipwavy);
             string ipwavydados = Encoding.UTF8.GetString(ipwavy, 0, ipwavyBytes);
-            string[] ipwavyFinal = ipwavydados.Split(":");
-            string ipwavySQL = ipwavyFinal[1];
-            Console.WriteLine($"{ipwavydados}");
+            Console.WriteLine(ipwavydados);
 
 
             //recebe wavy id com pre processamento
@@ -130,31 +128,16 @@ class Example
             string wavyProcessamentoDados = Encoding.UTF8.GetString(wavyProcessamento, 0, wavyProcessamentoBytes);
             string[] wavyProcessamentoFinal = wavyProcessamentoDados.Split(":");
             string wavyProcessamentoSQL = wavyProcessamentoFinal[1];
+            var temperatura = Convert.ToInt64(wavyProcessamentoFinal[4]);
+            var velocidadeOndas = Convert.ToInt64(wavyProcessamentoFinal[5]);
+            var alturaOndas = Convert.ToInt64(wavyProcessamentoFinal[6]);
+            var profundidade = Convert.ToInt64(wavyProcessamentoFinal[7]);
+            var date = wavyProcessamentoFinal[8];
+            var estado = wavyProcessamentoFinal[9];
             Console.WriteLine($"{wavyProcessamentoDados}");
 
 
-            //Status da Wavy recebido pelo agregador
-            byte[] agregadorStatus = new byte[1024];
-            int agregadorStatusBytes = clientSocket.Receive(agregadorStatus);
-            string agregadorStatusDados = Encoding.UTF8.GetString(agregadorStatus, 0, agregadorStatusBytes);
-            string[] agregadorFinal = agregadorStatusDados.Split(":");
-            string agregadorStatusSQL = agregadorFinal[1];
-            Console.WriteLine($"{agregadorStatusDados}");
-
-
-            if (File.Exists(filePath))
-            {
-                Console.WriteLine("Dados guardados no ficheiro");
-                string dados = $"{ipwavydados}{Environment.NewLine}{agregadorStatusDados}{Environment.NewLine}{wavyProcessamentoDados}";
-                File.WriteAllText(filePath, dados);
-            }
-            else
-            {
-                Console.WriteLine("Ficheiro não existe");
-            }
-
-
-            string connectionString = "Server=localhost;Database=SD;Trusted_Connection=True;";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SD;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             
 
           
@@ -162,18 +145,55 @@ class Example
             {
                 connection.Open();
 
-                string query = "INSERT INTO DadosAgregador (IPWavy, WavyProcessamento) " +
-                               "VALUES (@IPWavy, @WavyProc)";
+                string query = "INSERT INTO DadosAgregador (IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_Dados, Estado) " +
+                               "VALUES (@IPWavy, @WavyProc, @Temp, @VelOndas, @AlturaOndas, @Profundidade, @Data, @Estado)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@IPWavy", ipwavySQL);
-                    command.Parameters.AddWithValue("@WavyProc", wavyProcessamentoSQL);
+                    command.Parameters.AddWithValue("@IPWavy", ipwavydados.Trim());
+                    command.Parameters.AddWithValue("@WavyProc", wavyProcessamentoSQL.Trim());
+                    command.Parameters.AddWithValue("@Temp", temperatura);
+                    command.Parameters.AddWithValue("@VelOndas", velocidadeOndas);
+                    command.Parameters.AddWithValue("@AlturaOndas", alturaOndas);
+                    command.Parameters.AddWithValue("@Profundidade", profundidade);
+                    command.Parameters.AddWithValue("@Data", date);
+                    command.Parameters.AddWithValue("@Estado", estado);
 
-                    command.ExecuteNonQuery();
                     Console.WriteLine("Dados inseridos na base de dados.");
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    Console.WriteLine($"Linhas afetadas: {rowsAffected}");
+
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Dados inseridos com sucesso. A verificar...");
+
+                        string checkQuery = "SELECT TOP 1 * FROM DadosAgregador ORDER BY Id DESC";
+                        using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                        {
+                            using (SqlDataReader reader = checkCommand.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    Console.WriteLine($"Verificação: IPWavy={reader["IPWavy"]}, WavyProcessamento={reader["WavyProcessamento"]}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nenhum dado encontrado após inserção.");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nenhuma linha afetada pelo INSERT!");
+                    }
                 }
+
+
             }
+
+
 
 
         }

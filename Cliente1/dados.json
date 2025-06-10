@@ -2,7 +2,7 @@
   "WAVY_ID": "3456",
   "PRE_PROCESSAMENTO": "JSON FILE",
   "VOLUME_DADOS_ENVIAR": "450MB",
-  "SERVIDOR_ASSOCIADO":"127.0.0.1:800",
+  "SERVIDOR_ASSOCIADO":"127.0.0.1.800",
   "STATUS": "status",
   "data_type": "Objeto JSON",
   "Last_Sync": "05/04/2025"

@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Net;
 using Google.Protobuf;
 using System.Security.AccessControl;
+using System.Reflection;
 
 
 var factory = new ConnectionFactory { HostName = "localhost" };
@@ -121,39 +122,231 @@ consumer3.ReceivedAsync += (model, ea) =>
     var message3 = Encoding.UTF8.GetString(body3);
     byte[] resposta = Encoding.UTF8.GetBytes(message3);
     string[] IDcompleto = message3.Split(":");
+    var temp = Convert.ToInt64(IDcompleto[4]);
+    var VelOndas = Convert.ToInt64(IDcompleto[5]);
+    var alturaOndas = Convert.ToInt64(IDcompleto[6]);
+    var profundidade = Convert.ToInt64(IDcompleto[7]);
+    var date = Convert.ToString(IDcompleto[8]);
+    string estado = IDcompleto[9];
+
     if (IDcompleto[1] == "Manipulação_Strings")
     {
         Console.WriteLine($" [x] Received ID:{message3}");
-        Console.WriteLine("Resposta RPC: [ID] -> " + replyIDStrings + 
-            " [Pre_Processamento] -> " + replyIDProcessamento + 
-            " [Volume_Dados] -> " + replyIDDados + 
-            " [Servidor] -> " + replyIDServidor );
-        serverSocket.Send(resposta);
-    } else if (IDcompleto[1] == "Leitura_Ficheiro_TXT")
+        Console.WriteLine("Resposta RPC: [ID] -> " + replyIDStrings +
+            " [Pre_Processamento] -> " + replyIDProcessamento +
+            " [Volume_Dados] -> " + replyIDDados +
+            " [Servidor] -> " + replyIDServidor +
+            " [Temperatura] -> " + temp +
+            " [Velocidade de Ondas] -> " + VelOndas +
+            " [Altura de Ondas] -> " + alturaOndas +
+            " [Profundidade] -> " + profundidade +
+            " [Data] -> " + date +
+            " [Estado] -> " + estado);
+
+        Console.WriteLine("Deseja mudar o estado?");
+        var leitura = Console.ReadLine();
+        if (leitura == "Sim")
+        {
+            Console.WriteLine("Escolhe o estado: Associada(1) - Operação(2) - Manutenção(3) - Desativada(4)");
+            var resp = Console.ReadLine();
+            string respostaFinal = null;
+            byte[] answer = null;
+            switch (resp)
+            {
+                case "1":
+                    IDcompleto[9] = "Associada";
+                    string answer1 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer1);
+                    Console.WriteLine("Estado alterado: " + answer1);
+                    serverSocket.Send(answer);
+                    break;
+                case "2":
+                    IDcompleto[9] = "Operação";
+                    string answer2 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer2);
+                    Console.WriteLine("Estado alterado: " + answer2);
+                    serverSocket.Send(answer);
+                    break;
+                case "3":
+                    IDcompleto[9] = "Manutenção";
+                    string answer3 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer3);
+                    Console.WriteLine("Estado alterado: " + answer3);
+                    serverSocket.Send(answer);
+                    break;
+                case "4":
+                    IDcompleto[9] = "Associada";
+                    string answer4 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer4);
+                    Console.WriteLine("Estado alterado: " + answer4);
+                    serverSocket.Send(answer);
+                    break;
+            }
+        }
+    }
+    else if (IDcompleto[1] == "Leitura_Ficheiro_TXT")
     {
         Console.WriteLine($" [x] Received ID:{message3}");
         Console.WriteLine("Resposta RPC: [ID] -> " + replyIDTXT +
             " [Pre_Processamento] -> " + replyProcessamentoTXT +
             " [Volume_Dados] -> " + replyDadosTXT +
-            " [Servidor] -> " + replyServidorTXT);
-        serverSocket.Send(resposta);
-    } else if (IDcompleto[1] == "Ficheiro_CSV")
+            " [Servidor] -> " + replyServidorTXT +
+            " [Temperatura] -> " + temp +
+            " [Velocidade de Ondas] -> " + VelOndas +
+            " [Altura de Ondas] -> " + alturaOndas +
+            " [Profundidade] -> " + profundidade +
+            " [Data] -> " + date + 
+            " [Estado] -> " + estado);
+        Console.WriteLine("Deseja mudar o estado?");
+        var leitura = Console.ReadLine();
+        if (leitura == "Sim")
+        {
+            Console.WriteLine("Escolhe o estado: Associada(1) - Operação(2) - Manutenção(3) - Desativada(4)");
+            var resp = Console.ReadLine();
+            string respostaFinal = null;
+            byte[] answer = null;
+            switch (resp)
+            {
+                case "1":
+                    IDcompleto[9] = "Associada";
+                    string answer1 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer1);
+                    Console.WriteLine("Estado alterado: " + answer1);
+                    serverSocket.Send(answer);
+                    break;
+                case "2":
+                    IDcompleto[9] = "Operação";
+                    string answer2 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer2);
+                    Console.WriteLine("Estado alterado: " + answer2);
+                    serverSocket.Send(answer);
+                    break;
+                case "3":
+                    IDcompleto[9] = "Manutenção";
+                    string answer3 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer3);
+                    Console.WriteLine("Estado alterado: " + answer3);
+                    serverSocket.Send(answer);
+                    break;
+                case "4":
+                    IDcompleto[9] = "Associada";
+                    string answer4 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer4);
+                    Console.WriteLine("Estado alterado: " + answer4);
+                    serverSocket.Send(answer);
+                    break;
+            }
+        }
+    }
+    else if (IDcompleto[1] == "Ficheiro_CSV")
     {
         Console.WriteLine($" [x] Received ID:{message3}");
         Console.WriteLine("Resposta RPC: [ID] -> " + replyIDCSV +
             " [Pre_Processamento] -> " + replyProcessamentoCSV +
             " [Volume_Dados] -> " + replyDadosCSV +
-            " [Servidor] -> " + replyServidorCSV);
-        serverSocket.Send(resposta);
-    } else if (IDcompleto[1] == "JSON FILE")
+            " [Servidor] -> " + replyServidorCSV +
+            " [Temperatura] -> " + temp +
+            " [Velocidade de Ondas] -> " + VelOndas +
+            " [Altura de Ondas] -> " + alturaOndas +
+            " [Profundidade] -> " + profundidade +
+            " [Data] -> " + date +
+            " [Estado] -> " + estado);
+        Console.WriteLine("Deseja mudar o estado?");
+        var leitura = Console.ReadLine();
+        if (leitura == "Sim")
+        {
+            Console.WriteLine("Escolhe o estado: Associada(1) - Operação(2) - Manutenção(3) - Desativada(4)");
+            var resp = Console.ReadLine();
+            string respostaFinal = null;
+            byte[] answer = null;
+            switch (resp)
+            {
+                case "1":
+                    IDcompleto[9] = "Associada";
+                    string answer1 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer1);
+                    Console.WriteLine("Estado alterado: " + answer1);
+                    serverSocket.Send(answer);
+                    break;
+                case "2":
+                    IDcompleto[9] = "Operação";
+                    string answer2 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer2);
+                    Console.WriteLine("Estado alterado: " + answer2);
+                    serverSocket.Send(answer);
+                    break;
+                case "3":
+                    IDcompleto[9] = "Manutenção";
+                    string answer3 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer3);
+                    Console.WriteLine("Estado alterado: " + answer3);
+                    serverSocket.Send(answer);
+                    break;
+                case "4":
+                    IDcompleto[9] = "Associada";
+                    string answer4 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer4);
+                    Console.WriteLine("Estado alterado: " + answer4);
+                    serverSocket.Send(answer);
+                    break;
+            }
+        }
+    }
+    else if (IDcompleto[1] == "JSON FILE")
     {
         Console.WriteLine($" [x] Received ID:{message3}");
         Console.WriteLine("Resposta RPC: [ID] -> " + replyIDJson +
             " [Pre_Processamento] -> " + replyProcessamentoJSON +
             " [Volume_Dados] -> " + replyDadosJSON +
-            " [Servidor] -> " + replyServidorJSON);
-        serverSocket.Send(resposta);
-    } else
+            " [Servidor] -> " + replyServidorJSON +
+            " [Temperatura] -> " + temp +
+            " [Velocidade de Ondas] -> " + VelOndas +
+            " [Altura de Ondas] -> " + alturaOndas +
+            " [Profundidade] -> " + profundidade +
+            " [Data] -> " + date +
+            " [Estado] -> " + estado);
+        Console.WriteLine("Deseja mudar o estado?");
+        var leitura = Console.ReadLine();
+        if (leitura == "Sim")
+        {
+            Console.WriteLine("Escolhe o estado: Associada(1) - Operação(2) - Manutenção(3) - Desativada(4)");
+            var resp = Console.ReadLine();
+            string respostaFinal = null;
+            byte[] answer = null;
+            switch (resp)
+            {
+                case "1":
+                    IDcompleto[9] = "Associada";
+                    string answer1 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer1);
+                    Console.WriteLine("Estado alterado: " + answer1);
+                    serverSocket.Send(answer);
+                    break;
+                case "2":
+                    IDcompleto[9] = "Operação";
+                    string answer2 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer2);
+                    Console.WriteLine("Estado alterado: " + answer2);
+                    serverSocket.Send(answer);
+                    break;
+                case "3":
+                    IDcompleto[9] = "Manutenção";
+                    string answer3 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer3);
+                    Console.WriteLine("Estado alterado: " + answer3);
+                    serverSocket.Send(answer);
+                    break;
+                case "4":
+                    IDcompleto[9] = "Associada";
+                    string answer4 = String.Join(":", IDcompleto);
+                    answer = Encoding.UTF8.GetBytes(answer4);
+                    Console.WriteLine("Estado alterado: " + answer4);
+                    serverSocket.Send(answer);
+                    break;
+            }
+        } 
+    }
+    else
     {
         Console.WriteLine("erro");
         return Task.CompletedTask;

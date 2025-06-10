@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RPC_AGREGADOR_SERVIDOR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60866ed5881b834bbb8756068f16648a7b9cd563")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15c834627925d9e2b613779d8a8020a656929300")]
 [assembly: System.Reflection.AssemblyProductAttribute("RPC_AGREGADOR_SERVIDOR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RPC_AGREGADOR_SERVIDOR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

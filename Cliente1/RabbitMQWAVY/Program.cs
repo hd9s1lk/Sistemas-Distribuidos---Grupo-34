@@ -32,6 +32,23 @@ await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "IP", body: 
 Console.WriteLine($" [x] Sent {IP}");
 
 
+
+//dados analiticos
+Random random = new Random();
+int numeroAleatorioTemp = random.Next(0,32);
+int numeroAleatorioOndas = random.Next(10, 30);
+int numeroAleatorioAlturaOndas = random.Next(1, 12);
+int numeroAleatorioProfundidade = random.Next(0,6000);
+var DATA = DateTime.Now.ToString("d/M/yyyy");
+
+EstadoWavy[] estado = (EstadoWavy[])Enum.GetValues(typeof(EstadoWavy));
+int indice = random.Next(estado.Length);
+EstadoWavy estadoatual = estado[indice];
+
+var EstadoFinal = Convert.ToString(estadoatual);
+
+
+
 //mandar WavyID
 
 await channel.QueueDeclareAsync(queue: "ID", durable: false, exclusive: false, autoDelete: false,
@@ -41,7 +58,8 @@ Console.WriteLine("Que tipo de Dados queres enviar: (1 - Manipulação de String
 string resposta = Console.ReadLine();
 if (resposta == "1")
 {
-    string message3 = "WAVY_ID[1]:Manipulação_Strings:200MB:127.0.0.1";
+    string message3 = "WAVY_ID[1]:Manipulação_Strings:200MB:127.0.0.1:" + numeroAleatorioTemp + ":" + numeroAleatorioOndas + ":" + numeroAleatorioAlturaOndas + ":" + numeroAleatorioProfundidade + ":" + DATA + ":" + EstadoFinal;
+    Console.WriteLine(message3);
     var body3 = Encoding.UTF8.GetBytes(message3);
 
     await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "ID", body: body3);
@@ -50,16 +68,18 @@ if (resposta == "1")
 {
     string filePath = "dados.txt";
     string[] lines = File.ReadAllLines("dados.txt");
-    string wavyID = lines[0] + " " +lines[1];
-    var body3 = Encoding.UTF8.GetBytes(wavyID);
+    string wavyID = lines[0];
+    var TXTcompleto = lines[0] + ":" + numeroAleatorioTemp + ":" + numeroAleatorioOndas + ":" + numeroAleatorioAlturaOndas + ":" + numeroAleatorioProfundidade + ":" + DATA + ":" + EstadoFinal;
+    var body3 = Encoding.UTF8.GetBytes(TXTcompleto);
 
     await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "ID", body: body3);
-    Console.WriteLine($" [x] Sent {wavyID}");
+    Console.WriteLine($" [x] Sent {TXTcompleto}");
 } else if(resposta == "3")
 {
     string filePath = "dados.csv";
     string[] lines = File.ReadAllLines("dados.csv");
-    string wavyID = lines[0] + " " + lines[1];
+    string wavyID = lines[0] + ":" + numeroAleatorioTemp + ":" + numeroAleatorioOndas + ":" + numeroAleatorioAlturaOndas + ":" + numeroAleatorioProfundidade + ":" + DATA + ":" + EstadoFinal;
+    Console.WriteLine(wavyID);
     var body3 = Encoding.UTF8.GetBytes(wavyID);
 
     await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "ID", body: body3);
@@ -70,9 +90,10 @@ if (resposta == "1")
     string filePath = "dados.json";
     string lines = File.ReadAllText("dados.json");
     DADOS dados = JsonSerializer.Deserialize<DADOS>(lines);
-    string JSONdados = ($"{dados.WAVY_ID}:{dados.PRE_PROCESSAMENTO}:{dados.VOLUME_DADOS_ENVIAR}:{dados.SERVIDOR_ASSOCIADO}  " +
-        $"{dados.WAVY_ID}:{dados.STATUS}:{dados.data_type}:{dados.Last_Sync}");
+    string JSONdados = ($"{dados.WAVY_ID}:{dados.PRE_PROCESSAMENTO}:{dados.VOLUME_DADOS_ENVIAR}:{dados.SERVIDOR_ASSOCIADO}") + ":" + numeroAleatorioTemp + ":" + numeroAleatorioOndas + ":" + numeroAleatorioAlturaOndas + ":" + numeroAleatorioProfundidade + ":" + DATA + ":" + EstadoFinal;
     var body3 = Encoding.UTF8.GetBytes(JSONdados);
+
+    Console.WriteLine(JSONdados);
 
     await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "ID", body: body3);
     Console.WriteLine($" [x] Sent {JSONdados}");
@@ -95,4 +116,12 @@ class Dados
     public string data_type { get; set; }
 
     public string Last_Sync { get; set; }
+}
+
+public enum EstadoWavy
+{
+    Associada,
+    Manutencao,
+    Operacao,
+    Desativada
 }

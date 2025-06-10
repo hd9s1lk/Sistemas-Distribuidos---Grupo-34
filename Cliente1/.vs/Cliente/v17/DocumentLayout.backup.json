@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{D692E643-8C68-4C60-A4AF-B5DE2F707418}|Cliente.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\cliente1\\dados.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D692E643-8C68-4C60-A4AF-B5DE2F707418}|Cliente.csproj|solutionrelative:dados.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D692E643-8C68-4C60-A4AF-B5DE2F707418}|Cliente.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\cliente1\\dados.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D692E643-8C68-4C60-A4AF-B5DE2F707418}|Cliente.csproj|solutionrelative:dados.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dados.csv",
+              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Cliente1\\dados.csv",
+              "RelativeDocumentMoniker": "dados.csv",
+              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Cliente1\\dados.csv",
+              "RelativeToolTip": "dados.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2025-06-10T11:18:32.496Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,9 +45,10 @@
               "RelativeDocumentMoniker": "dados.txt",
               "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Cliente1\\dados.txt",
               "RelativeToolTip": "dados.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-05-17T14:54:04.917Z"
+              "WhenOpened": "2025-05-17T14:54:04.917Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +58,7 @@
               "RelativeDocumentMoniker": "RabbitMQWAVY\\Program.cs",
               "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Cliente1\\RabbitMQWAVY\\Program.cs",
               "RelativeToolTip": "RabbitMQWAVY\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAQwFMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-17T13:45:09.369Z",
               "EditorCaption": ""
