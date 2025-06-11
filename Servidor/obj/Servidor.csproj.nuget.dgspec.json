@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj": {}
+    "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj": {
+    "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj",
+        "projectUniqueName": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj",
         "projectName": "Servidor",
-        "projectPath": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj",
-        "packagesPath": "C:\\Users\\Henrique Dias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\Servidor\\obj\\",
+        "projectPath": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\Servidor\\Servidor.csproj",
+        "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\Servidor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Syncfusion\\Essential Studio\\WPF\\25.1.35\\ToolboxNuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Henrique Dias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Syncfusion Toolbox for WPF.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -46,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -87,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
