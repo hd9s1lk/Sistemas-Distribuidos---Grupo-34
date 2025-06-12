@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\RPC_Servidor.props" />
-</Project>
