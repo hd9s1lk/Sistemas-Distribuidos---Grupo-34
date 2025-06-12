@@ -30,7 +30,7 @@
             text-align: center;
         }
         th {
-            background: linear-gradient(90deg, #b71c1c 0%, #d32f2f 100%);
+            background: linear-gradient(90deg, #be1537 0%, #ff1744 100%);
             color: #fff;
             font-size: 1.08em;
             letter-spacing: 0.5px;
@@ -43,7 +43,7 @@
             background: #222;
         }
         tr:hover {
-            background: #ff5252;
+            background: #ff1744;
         }
         td {
             font-size: 1em;
@@ -76,8 +76,8 @@
             text-align: center;
         }
         .custom-selected.open, .custom-selected:focus {
-            border: 2px solid #ff5252;
-            box-shadow: 0 0 0 2px #ff174455;
+            border: 2px solid #ff1744;
+            box-shadow: 0 0 0 2px rgba(206, 28, 64, 0.333);
             background: #1a0005;
         }
         .custom-options {
@@ -141,6 +141,49 @@
                 text-align: left;
             }
         }
+        .btn-remover {
+            background: #fff;
+            color: #ff1744;
+            border: none;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 1px 4px #0007;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-remover:hover {
+            background: #fff240;
+        }
+        .btn-reset {
+            background: #fff;
+            color: #ff1744;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 400;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0 1px 4px #0007;
+            user-select: none;
+            letter-spacing: 0px;
+            line-height: 18px;
+            border: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-reset:hover {
+            background: #fff240;
+            color: #ff1744;
+        }
     </style>
 </head>
 <body>
@@ -148,22 +191,63 @@
         <span style="font-size:1.1em;color:#494949;font-weight:700;display:inline-block;margin-bottom:0;">&lt; Sistemas Distribuídos &gt;</span>
     </div>
     <h2 style="margin-top:2px;">Tabela de Dados WAVY</h2>
-    <div style="width:90%;margin:0 auto 16px auto;text-align:right;display:flex;gap:16px;justify-content:flex-end;align-items:center;">
-        <span onclick="resetFiltros()" title="Resetar filtros" style="display:flex;width:18px;height:18px;background:#ffeb3c;border-radius:50%;margin-right:4px;cursor:pointer;box-shadow:0 1px 4px #0007;vertical-align:middle;transition:background 0.2s;align-items:center;justify-content:center;font-weight:400;font-family:'Segoe UI', Arial, sans-serif;font-size:12px;color:#000000;user-select:none;letter-spacing:0px;line-height:18px;">
-            <span style="display:block;width:100%;text-align:center;line-height:1;">R</span>
-        </span>
-        <label for="tipoFiltro" style="font-weight:bold;color:#ff1744;">Filtragem por:</label>
-        <div class="custom-dropdown" id="dropdown-tipoFiltro">
-            <div class="custom-selected" onclick="toggleDropdown('tipoFiltro')" id="selected-tipoFiltro">Escolha...</div>
-            <div class="custom-options" id="options-tipoFiltro" style="display:none;">
-                <div data-value="" style="color:#000000;pointer-events:auto;">ㅤㅤㅤㅤ</div>
-                <div data-value="2">WavyProcessamento</div>
-                <div data-value="8">Estado</div>
+    <div style="height:18px;"></div>
+    <div style="width:90%;margin:0 auto 16px auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 24px;align-items:center;">
+        <div style="display:flex;gap:12px;align-items:center;justify-content:flex-start;">
+            <input type="text" id="pesquisaIP" placeholder="Pesquisar IP..." style="padding:7px 12px;border-radius:6px;border:1.5px solid #ff1744;font-size:1em;outline:none;min-width:180px;max-width:260px;background:#000;color:#fff;">
+            <button id="btnPesquisarIP" onclick="pesquisarIP()" style="background:#000;color:#fff;border:1.5px solid #ff1744;border-radius:6px;padding:7px 18px;font-size:1em;cursor:pointer;transition:background 0.2s;">Pesquisar</button>
+            <button id="btnLimparPesquisaIP" onclick="limparPesquisaIP()" style="background:#000;color:#fff;border:1.5px solid #ff1744;border-radius:6px;padding:7px 12px;font-size:1em;cursor:pointer;transition:background 0.2s;">Limpar</button>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;">
+            <button id="btnAdicionarWavy" style="background:#000;color:#fff;border:1.5px solid #ff1744;border-radius:6px;padding:9px 22px;font-size:1.08em;font-weight:600;cursor:pointer;transition:background 0.2s;box-shadow:0 2px 8px #0003;">Adicionar Wavy Manualmente</button>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;justify-content:flex-end;">
+            <span onclick="resetFiltros()" title="Resetar filtros" class="btn-reset">
+                <span style="display:block;width:100%;text-align:center;line-height:1;">R</span>
+            </span>
+            <label for="tipoFiltro" style="font-weight:bold;color:#ff1744;">Filtragem por:</label>
+            <div class="custom-dropdown" id="dropdown-tipoFiltro">
+                <div class="custom-selected" onclick="toggleDropdown('tipoFiltro')" id="selected-tipoFiltro">Escolha...</div>
+                <div class="custom-options" id="options-tipoFiltro" style="display:none;">
+                    <div data-value="" style="color:#000000;pointer-events:auto;">ㅤㅤㅤㅤ</div>
+                    <div data-value="2">WavyProcessamento</div>
+                    <div data-value="8">Estado</div>
+                </div>
+            </div>
+            <div class="custom-dropdown" id="dropdown-valorFiltro" style="display:none;">
+                <div class="custom-selected" onclick="toggleDropdown('valorFiltro')" id="selected-valorFiltro">Todos</div>
+                <div class="custom-options" id="options-valorFiltro" style="display:none;"></div>
             </div>
         </div>
-        <div class="custom-dropdown" id="dropdown-valorFiltro" style="display:none;">
-            <div class="custom-selected" onclick="toggleDropdown('valorFiltro')" id="selected-valorFiltro">Todos</div>
-            <div class="custom-options" id="options-valorFiltro" style="display:none;"></div>
+    </div>
+    <!-- Modal para adicionar Wavy -->
+    <div id="modalAdicionarWavy" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000a;z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:#181818;padding:32px 28px 20px 28px;border-radius:12px;box-shadow:0 8px 32px #000b;min-width:320px;max-width:95vw;position:relative;">
+            <span onclick="fecharModalAdicionarWavy()" style="position:absolute;top:10px;right:16px;font-size:1.5em;color:#ff1744;cursor:pointer;font-weight:bold;">&times;</span>
+            <h3 style="color:#ff1744;text-align:center;margin-top:0;margin-bottom:18px;">Adicionar Wavy Manualmente</h3>
+            <form id="formAdicionarWavy" style="display:flex;flex-direction:column;gap:12px;">
+                <input name="IPWavy" placeholder="IPWavy" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                <select name="WavyProcessamento" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                    <option value="">WavyProcessamento</option>
+                    <option value="Ficheiro_CSV">Ficheiro_CSV</option>
+                    <option value="Ficheiro_TXT">Ficheiro_TXT</option>
+                    <option value="JSON FILE">JSON FILE</option>
+                    <option value="Manipulação_Strings">Manipulação_Strings</option>
+                </select>
+                <input name="Temperatura" placeholder="Temperatura (0-32)" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                <input name="Velocidade_Ondas" placeholder="Velocidade_Ondas (0.1-30)" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                <input name="Altura_Ondas" placeholder="Altura_Ondas (0.1-12)" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                <input name="Profundidade" placeholder="Profundidade (0-6000)" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                <input name="Data_dados" placeholder="Data_dados (DD/M/YYYY)" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                <select name="Estado" required style="padding:7px 10px;border-radius:5px;border:1px solid #ff1744;background:#000;color:#fff;">
+                    <option value="">Estado</option>
+                    <option value="Associada">Associada</option>
+                    <option value="Desativada">Desativada</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Operação">Operação</option>
+                </select>
+                <button type="submit" style="background:#ff1744;color:#fff;border:none;border-radius:6px;padding:9px 0;font-size:1.08em;font-weight:600;cursor:pointer;transition:background 0.2s;margin-top:8px;">Confirmar</button>
+            </form>
         </div>
     </div>
     <table id="tabelaWavy">
@@ -178,14 +262,16 @@
                 <th onclick="ordenarTabela(6)" style="cursor:pointer; user-select:none;">Profundidade <span id="seta-6"></span></th>
                 <th onclick="ordenarTabela(7)" style="cursor:pointer; user-select:none;">Data_dados <span id="seta-7"></span></th>
                 <th onclick="ordenarTabela(8)" style="cursor:pointer; user-select:none;">Estado <span id="seta-8"></span></th>
+                <th style="user-select:none;width:36px;"></th>
             </tr>
         </thead>
         <tbody>
             {% for linha in dados %}
-            <tr>
+            <tr data-id="{{ linha[0] }}" data-ipwavy="{{ linha[1] }}">
                 {% for i in range(colunas|length) %}
                     <td data-label="{{ colunas[i] }}">{{ linha[i] }}</td>
                 {% endfor %}
+                <td><button class="btn-remover" title="Eliminar" onclick="removerLinha(this)">X</button></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -375,6 +461,121 @@
         }
         // Reaplicar filtro se necessário
         filtrarTabelaCustom();
+    }
+    function pesquisarIP() {
+        let ip = document.getElementById('pesquisaIP').value.trim().toLowerCase();
+        let tabela = document.getElementById('tabelaWavy');
+        let linhas = Array.from(tabela.tBodies[0].rows);
+        linhas.forEach(l => {
+            let ipCell = l.cells[1].innerText.trim().toLowerCase();
+            l.style.display = (ip === '' || ipCell.includes(ip)) ? '' : 'none';
+        });
+    }
+    function limparPesquisaIP() {
+        document.getElementById('pesquisaIP').value = '';
+        let tabela = document.getElementById('tabelaWavy');
+        let linhas = Array.from(tabela.tBodies[0].rows);
+        linhas.forEach(l => l.style.display = '');
+    }
+    // Efeito de clique nos botões Pesquisar e Limpar
+    const btnLimpar = document.getElementById('btnLimparPesquisaIP');
+    const btnPesquisar = document.getElementById('btnPesquisarIP');
+    function setBtnActive(btn) {
+        btn.style.background = '#ff1744';
+        btn.style.color = '#fff';
+    }
+    function setBtnNormal(btn, isLimpar) {
+        btn.style.background = '#000';
+        btn.style.color = '#fff';
+        if (isLimpar) btn.style.border = '1.5px solid #ff1744';
+    }
+    btnLimpar.addEventListener('mousedown', function() { setBtnActive(btnLimpar); });
+    btnLimpar.addEventListener('mouseup', function() { setBtnNormal(btnLimpar, true); });
+    btnLimpar.addEventListener('mouseleave', function() { setBtnNormal(btnLimpar, true); });
+    btnPesquisar.addEventListener('mousedown', function() { setBtnActive(btnPesquisar); });
+    btnPesquisar.addEventListener('mouseup', function() { setBtnNormal(btnPesquisar, false); });
+    btnPesquisar.addEventListener('mouseleave', function() { setBtnNormal(btnPesquisar, false); });
+    // Efeito de clique no botão Adicionar Wavy Manualmente
+    const btnAdicionarWavy = document.getElementById('btnAdicionarWavy');
+    btnAdicionarWavy.addEventListener('mousedown', function() {
+        btnAdicionarWavy.style.background = '#ff1744';
+        btnAdicionarWavy.style.color = '#fff';
+    });
+    btnAdicionarWavy.addEventListener('mouseup', function() {
+        btnAdicionarWavy.style.background = '#000';
+        btnAdicionarWavy.style.color = '#fff';
+    });
+    btnAdicionarWavy.addEventListener('mouseleave', function() {
+        btnAdicionarWavy.style.background = '#000';
+        btnAdicionarWavy.style.color = '#fff';
+    });
+    // Modal lógica
+    const modalAdicionarWavy = document.getElementById('modalAdicionarWavy');
+    function abrirModalAdicionarWavy() {
+        modalAdicionarWavy.style.display = 'flex';
+    }
+    function fecharModalAdicionarWavy() {
+        modalAdicionarWavy.style.display = 'none';
+    }
+    btnAdicionarWavy.onclick = abrirModalAdicionarWavy;
+    // Fechar modal ao clicar fora do conteúdo
+    modalAdicionarWavy.addEventListener('click', function(e) {
+        if (e.target === modalAdicionarWavy) fecharModalAdicionarWavy();
+    });
+    // Submissão do formulário
+    document.getElementById('formAdicionarWavy').onsubmit = async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const dados = {
+            IPWavy: form.IPWavy.value,
+            WavyProcessamento: form.WavyProcessamento.value,
+            Temperatura: form.Temperatura.value,
+            Velocidade_Ondas: form.Velocidade_Ondas.value,
+            Altura_Ondas: form.Altura_Ondas.value,
+            Profundidade: form.Profundidade.value,
+            Data_dados: form.Data_dados.value,
+            Estado: form.Estado.value
+        };
+        const resp = await fetch('/adicionar_wavy', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(dados)
+        });
+        if (resp.ok) {
+            fecharModalAdicionarWavy();
+            window.location.reload();
+        } else {
+            alert('Erro ao adicionar Wavy!');
+        }
+    };
+    // Função para remover linha (chamada pelo botão X)
+    async function removerLinha(btn) {
+        const row = btn.closest('tr');
+        const id = row.getAttribute('data-id');
+        const ipwavy = row.getAttribute('data-ipwavy');
+        if (!id || !ipwavy) {
+            alert('ID ou IPWavy não encontrado para esta linha.');
+            return;
+        }
+        if (!confirm('Tem a certeza que deseja eliminar este registo?')) return;
+        try {
+            const resp = await fetch('/eliminar_wavy', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ id: id, ipwavy: ipwavy })
+            });
+            if (resp.ok) {
+                row.style.transition = 'background 0.3s, opacity 0.3s';
+                row.style.background = '#ff1744';
+                row.style.opacity = '0.5';
+                setTimeout(() => row.remove(), 250);
+            } else {
+                const msg = await resp.text();
+                alert('Erro ao eliminar: ' + msg);
+            }
+        } catch (e) {
+            alert('Erro de ligação ao eliminar registo!');
+        }
     }
     </script>
 </body>
