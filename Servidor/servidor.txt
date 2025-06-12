@@ -1,0 +1,4 @@
+192.45.4.32
+192.168.3.45
+WAVY_ID[2]:Leitura_Ficheiro_TXT:200MB:127.0.0.1:800 
+WAVY_ID[2]:Desativada:Strings:03/04/2025
