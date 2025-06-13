@@ -4,21 +4,16 @@ import pyodbc
 app = Flask(__name__)
 
 def ler_dados():
-    # Tenta autenticação Windows (funciona em qualquer PC com permissões na BD)
     conn = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};'
-    'SERVER=(localdb)\\MSSQLLocalDB;'
-    'DATABASE=sd;'
-    'Trusted_Connection=yes;'
-)
+        'DRIVER={ODBC Driver 17 for SQL Server};'
+        'SERVER=(localdb)\\MSSQLLocalDB;'
+        'DATABASE=sd;'
+        'Trusted_Connection=yes;'
+    )
     cursor = conn.cursor()
-    cursor.execute("SELECT IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_dados, Estado FROM dados_agregador")
+    cursor.execute("SELECT ID, IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_dados, Estado FROM dados_agregador")
     resultados = cursor.fetchall()
-    dados = []
-    for idx, linha in enumerate(resultados):
-        linha = list(linha)
-        linha.insert(0, str(idx+1))  # ID na primeira coluna
-        dados.append(linha)
+    dados = [list(linha) for linha in resultados]
     cursor.close()
     conn.close()
     return dados
@@ -38,10 +33,9 @@ def tabela():
 @app.route('/eliminar_wavy', methods=['POST'])
 def eliminar_wavy():
     data = request.get_json()
-    id_str = data.get('id')
-    ipwavy = data.get('ipwavy')
-    if not id_str or not ipwavy:
-        return jsonify({'success': False, 'error': 'Dados insuficientes'}), 400
+    id_val = data.get('id')
+    if not id_val:
+        return jsonify({'success': False, 'error': 'ID não fornecido'}), 400
     try:
         conn = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server};'
@@ -50,20 +44,15 @@ def eliminar_wavy():
             'Trusted_Connection=yes;'
         )
         cursor = conn.cursor()
-        # Busca o IPWavy correspondente ao ID (ID é índice da lista, não da BD)
-        cursor.execute("SELECT IPWavy FROM dados_agregador")
-        resultados = cursor.fetchall()
-        idx = int(id_str) - 1
-        if idx < 0 or idx >= len(resultados):
-            cursor.close()
-            conn.close()
-            return jsonify({'success': False, 'error': 'ID inválido'}), 400
-        ipwavy_db = resultados[idx][0]
-        if ipwavy_db != ipwavy:
-            cursor.close()
-            conn.close()
-            return jsonify({'success': False, 'error': 'IPWavy não corresponde'}), 400
-        cursor.execute("DELETE FROM dados_agregador WHERE IPWavy = ?", ipwavy)
+        cursor.execute("DELETE FROM dados_agregador WHERE ID = ?", id_val)
+        # Reatribuir IDs sequenciais
+        cursor.execute("""
+            WITH CTE AS (
+                SELECT ID, ROW_NUMBER() OVER (ORDER BY ID) AS NewID
+                FROM dados_agregador
+            )
+            UPDATE CTE SET ID = NewID
+        """)
         conn.commit()
         cursor.close()
         conn.close()
@@ -82,10 +71,14 @@ def adicionar_wavy():
             'Trusted_Connection=yes;'
         )
         cursor = conn.cursor()
+        cursor.execute("SELECT ISNULL(MAX(ID), 0) FROM dados_agregador")
+        max_id = cursor.fetchone()[0]
+        novo_id = max_id + 1
         cursor.execute("""
-            INSERT INTO dados_agregador (IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_dados, Estado)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO dados_agregador (ID, IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_dados, Estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
+            novo_id,
             data['IPWavy'],
             data['WavyProcessamento'],
             data['Temperatura'],

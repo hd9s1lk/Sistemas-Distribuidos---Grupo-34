@@ -160,6 +160,10 @@
         .btn-remover:hover {
             background: #fff240;
         }
+        .btn-remover:active {
+            background: #ff1744;
+            color: #fff;
+        }
         .btn-reset {
             background: #fff;
             color: #ff1744;
@@ -183,6 +187,15 @@
         .btn-reset:hover {
             background: #fff240;
             color: #ff1744;
+        }
+        .btn-reset:active {
+            background: #ff1744;
+            color: #fff;
+        }
+        button:active, .custom-selected:active {
+            background: #ff1744 !important;
+            color: #fff !important;
+            border-color: #ff1744 !important;
         }
     </style>
 </head>
@@ -278,11 +291,27 @@
     </table>
     <script>
     let ordemAtual = {col: null, asc: true};
+    let linhasOriginais = [];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Guarda a ordem original das linhas
+        let tabela = document.getElementById('tabelaWavy');
+        let tbody = tabela.tBodies[0];
+        linhasOriginais = Array.from(tbody.rows);
+
+        // Garante que as colunas continuam clicáveis após reset
+        for (let i = 0; i < tabela.tHead.rows[0].cells.length; i++) {
+            if (tabela.tHead.rows[0].cells[i].onclick) {
+                tabela.tHead.rows[0].cells[i].onclick = function() { ordenarTabela(i); };
+            }
+        }
+    });
+
     function isDate(str) {
-        return /^\d{1,2}[\/\-]\d{4}$/.test(str) || /^\d{4}-\d{1,2}-\d{1,2}$/.test(str);
+        return /^\d{1,2}[\/\-]\d{1,2}[\/\-]\d{4}$/.test(str) || /^\d{4}-\d{1,2}-\d{1,2}$/.test(str);
     }
     function parseDate(str) {
-        if (/^\d{1,2}[\/\-]\d{4}$/.test(str)) {
+        if (/^\d{1,2}[\/\-]\d{1,2}[\/\-]\d{4}$/.test(str)) {
             let parts = str.split(/[\/\-]/);
             let day = parseInt(parts[0], 10);
             let month = parseInt(parts[1], 10) - 1;
@@ -306,6 +335,8 @@
     function comparar(a, b, col, asc) {
         let valA = a.cells[col].innerText.trim();
         let valB = b.cells[col].innerText.trim();
+
+        // Tenta ordenar como data
         if (isDate(valA) && isDate(valB)) {
             let dA = parseDate(valA);
             let dB = parseDate(valB);
@@ -313,14 +344,16 @@
                 return asc ? dA - dB : dB - dA;
             }
         }
+        // Tenta ordenar como número
         let numA = parseFloat(valA.replace(',', '.'));
         let numB = parseFloat(valB.replace(',', '.'));
         if (!isNaN(numA) && !isNaN(numB)) {
             return asc ? numA - numB : numB - numA;
-        } else {
-            return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
         }
+        // Ordena como texto
+        return asc ? valA.localeCompare(valB) : valB.localeCompare(valA);
     }
+
     function ordenarTabela(col) {
         let tabela = document.getElementById('tabelaWavy');
         let tbody = tabela.tBodies[0];
@@ -328,255 +361,254 @@
         let asc = ordemAtual.col === col ? !ordemAtual.asc : true;
         linhas.sort((a, b) => comparar(a, b, col, asc));
         linhas.forEach(l => tbody.appendChild(l));
+        // Atualiza as setas
         for (let i = 0; i < tabela.tHead.rows[0].cells.length; i++) {
-            document.getElementById('seta-' + i).innerText = '';
+            let seta = document.getElementById('seta-' + i);
+            if (seta) seta.innerText = '';
         }
-        document.getElementById('seta-' + col).innerText = asc ? '▲' : '▼';
+        let setaAtual = document.getElementById('seta-' + col);
+        if (setaAtual) setaAtual.innerText = asc ? '▲' : '▼';
         ordemAtual = {col, asc};
     }
-    // Filtro dinâmico para WavyProcessamento e Estado
-    function atualizarValoresFiltro() {
-        let tipo = document.getElementById('tipoFiltro').value;
-        let valorFiltro = document.getElementById('valorFiltro');
-        valorFiltro.innerHTML = '';
-        valorFiltro.style.display = 'none';
-        if (!tipo) { filtrarTabela(); return; }
-        let tabela = document.getElementById('tabelaWavy');
-        let linhas = Array.from(tabela.tBodies[0].rows);
-        let valores = new Set();
-        linhas.forEach(l => valores.add(l.cells[tipo].innerText.trim()));
-        let arr = Array.from(valores).sort();
-        valorFiltro.innerHTML = '<option value="">Todos</option>' + arr.map(v => `<option value="${v}">${v}</option>`).join('');
-        valorFiltro.style.display = '';
-        filtrarTabela();
-    }
-    // Custom dropdown logic
-    let filtroTipo = '';
-    let filtroValor = '';
-    function toggleDropdown(tipo) {
-        closeAllDropdowns(tipo);
-        const selected = document.getElementById('selected-' + tipo);
-        const options = document.getElementById('options-' + tipo);
-        if (options.style.display === 'block') {
-            options.style.display = 'none';
-            selected.classList.remove('open');
-        } else {
-            options.style.display = 'block';
-            selected.classList.add('open');
-        }
-    }
-    function closeAllDropdowns(except) {
-        ['tipoFiltro','valorFiltro'].forEach(function(tipo) {
-            if (except !== tipo) {
-                document.getElementById('options-' + tipo).style.display = 'none';
-                document.getElementById('selected-' + tipo).classList.remove('open');
-            }
-        });
-    }
-    document.addEventListener('click', function(e) {
-        if (!e.target.classList.contains('custom-selected')) {
-            closeAllDropdowns();
-        }
-    });
-    // TipoFiltro
-    document.querySelectorAll('#options-tipoFiltro div').forEach(function(opt) {
-        opt.onclick = function() {
-            filtroTipo = this.getAttribute('data-value');
-            if (filtroTipo === "") {
-                document.getElementById('selected-tipoFiltro').textContent = "Escolha...";
-                document.getElementById('dropdown-valorFiltro').style.display = 'none';
-                filtrarTabelaCustom();
-            } else {
-                document.getElementById('selected-tipoFiltro').textContent = this.textContent;
-            }
-            document.getElementById('options-tipoFiltro').style.display = 'none';
-            document.getElementById('selected-tipoFiltro').classList.remove('open');
-            if (filtroTipo !== "") atualizarValoresFiltroCustom();
-        };
-    });
-    // ValorFiltro
-    function atualizarValoresFiltroCustom() {
-        filtroValor = '';
-        let dropdown = document.getElementById('dropdown-valorFiltro');
-        let selected = document.getElementById('selected-valorFiltro');
-        let options = document.getElementById('options-valorFiltro');
-        if (!filtroTipo) {
-            dropdown.style.display = 'none';
-            filtrarTabelaCustom();
-            return;
-        }
-        let tabela = document.getElementById('tabelaWavy');
-        let linhas = Array.from(tabela.tBodies[0].rows);
-        let valores = new Set();
-        linhas.forEach(l => valores.add(l.cells[filtroTipo].innerText.trim()));
-        let arr = Array.from(valores).sort();
-        options.innerHTML = '<div data-value="">Todos</div>' + arr.map(v => `<div data-value="${v}">${v}</div>`).join('');
-        dropdown.style.display = '';
-        selected.textContent = 'Todos';
-        // Add click events
-        options.querySelectorAll('div').forEach(function(opt) {
-            opt.onclick = function() {
-                filtroValor = this.getAttribute('data-value');
-                selected.textContent = this.textContent;
-                options.style.display = 'none';
-                selected.classList.remove('open');
-                filtrarTabelaCustom();
-            };
-        });
-    }
-    function filtrarTabelaCustom() {
-        let tabela = document.getElementById('tabelaWavy');
-        let linhas = Array.from(tabela.tBodies[0].rows);
-        linhas.forEach(l => {
-            if (!filtroTipo || !filtroValor) {
-                l.style.display = '';
-            } else {
-                l.style.display = (l.cells[filtroTipo].innerText.trim() === filtroValor) ? '' : 'none';
-            }
-        });
-    }
-    // Salvar o HTML original do tbody na primeira execução
-    if (!window.tbodyOriginalHTML) {
-        window.tbodyOriginalHTML = document.querySelector('#tabelaWavy tbody').innerHTML;
-    }
+
+    // Função para resetar filtros e ordenação
     function resetFiltros() {
-        filtroTipo = '';
-        filtroValor = '';
-        document.getElementById('selected-tipoFiltro').textContent = 'Escolha...';
-        document.getElementById('selected-tipoFiltro').classList.remove('open');
-        document.getElementById('dropdown-valorFiltro').style.display = 'none';
-        // Resetar ordenação: remover setas e restaurar ordem original
+        // Limpa campo de pesquisa
+        document.getElementById('pesquisaIP').value = '';
+        // Limpa dropdowns customizados (se existirem)
+        let selectedTipo = document.getElementById('selected-tipoFiltro');
+        if (selectedTipo) selectedTipo.innerText = 'Escolha...';
+        let selectedValor = document.getElementById('selected-valorFiltro');
+        if (selectedValor) selectedValor.innerText = 'Todos';
+        let dropdownValor = document.getElementById('dropdown-valorFiltro');
+        if (dropdownValor) dropdownValor.style.display = 'none';
+
+        // Mostra todas as linhas da tabela (caso estejam escondidas por filtros)
         let tabela = document.getElementById('tabelaWavy');
         let tbody = tabela.tBodies[0];
-        // Restaurar tbody para o HTML original
-        tbody.innerHTML = window.tbodyOriginalHTML;
-        // Remover setas
+        for (let row of tbody.rows) {
+            row.style.display = '';
+        }
+
+        // Limpa as setas de ordenação
         for (let i = 0; i < tabela.tHead.rows[0].cells.length; i++) {
-            document.getElementById('seta-' + i).innerText = '';
+            let seta = document.getElementById('seta-' + i);
+            if (seta) seta.innerText = '';
         }
         ordemAtual = {col: null, asc: true};
-        // Reaplicar listeners de ordenação
-        for (let i = 0; i < tabela.tHead.rows[0].cells.length; i++) {
-            tabela.tHead.rows[0].cells[i].onclick = function() { ordenarTabela(i); };
+    }
+    // --- Dropdown customizado ---
+function toggleDropdown(tipo) {
+    let options = document.getElementById('options-' + tipo);
+    options.style.display = (options.style.display === 'block') ? 'none' : 'block';
+}
+document.addEventListener('click', function(e) {
+    // Fecha dropdowns se clicar fora
+    if (!e.target.classList.contains('custom-selected')) {
+        let dropdowns = document.querySelectorAll('.custom-options');
+        dropdowns.forEach(d => d.style.display = 'none');
+    }
+});
+document.querySelectorAll('#options-tipoFiltro div[data-value]').forEach(function(opt) {
+    opt.onclick = function() {
+        document.getElementById('selected-tipoFiltro').innerText = this.innerText;
+        document.getElementById('options-tipoFiltro').style.display = 'none';
+        let valFiltro = document.getElementById('dropdown-valorFiltro');
+        let selectedValor = document.getElementById('selected-valorFiltro');
+        if (this.dataset.value === "2" || this.dataset.value === "8") {
+            valFiltro.style.display = 'inline-block';
+            selectedValor.innerText = 'Todos';
+            // Popular o segundo dropdown com os valores únicos da coluna escolhida
+            popularDropdownValores(parseInt(this.dataset.value));
+        } else {
+            // Estado default: esconde o segundo dropdown, mostra todas as linhas
+            valFiltro.style.display = 'none';
+            selectedValor.innerText = 'Todos';
+            // Mostra todas as linhas
+            let tabela = document.getElementById('tabelaWavy');
+            let tbody = tabela.tBodies[0];
+            for (let row of tbody.rows) {
+                row.style.display = '';
+            }
         }
-        // Reaplicar filtro se necessário
-        filtrarTabelaCustom();
     }
-    function pesquisarIP() {
-        let ip = document.getElementById('pesquisaIP').value.trim().toLowerCase();
-        let tabela = document.getElementById('tabelaWavy');
-        let linhas = Array.from(tabela.tBodies[0].rows);
-        linhas.forEach(l => {
-            let ipCell = l.cells[1].innerText.trim().toLowerCase();
-            l.style.display = (ip === '' || ipCell.includes(ip)) ? '' : 'none';
-        });
-    }
-    function limparPesquisaIP() {
-        document.getElementById('pesquisaIP').value = '';
-        let tabela = document.getElementById('tabelaWavy');
-        let linhas = Array.from(tabela.tBodies[0].rows);
-        linhas.forEach(l => l.style.display = '');
-    }
-    // Efeito de clique nos botões Pesquisar e Limpar
-    const btnLimpar = document.getElementById('btnLimparPesquisaIP');
-    const btnPesquisar = document.getElementById('btnPesquisarIP');
-    function setBtnActive(btn) {
-        btn.style.background = '#ff1744';
-        btn.style.color = '#fff';
-    }
-    function setBtnNormal(btn, isLimpar) {
-        btn.style.background = '#000';
-        btn.style.color = '#fff';
-        if (isLimpar) btn.style.border = '1.5px solid #ff1744';
-    }
-    btnLimpar.addEventListener('mousedown', function() { setBtnActive(btnLimpar); });
-    btnLimpar.addEventListener('mouseup', function() { setBtnNormal(btnLimpar, true); });
-    btnLimpar.addEventListener('mouseleave', function() { setBtnNormal(btnLimpar, true); });
-    btnPesquisar.addEventListener('mousedown', function() { setBtnActive(btnPesquisar); });
-    btnPesquisar.addEventListener('mouseup', function() { setBtnNormal(btnPesquisar, false); });
-    btnPesquisar.addEventListener('mouseleave', function() { setBtnNormal(btnPesquisar, false); });
-    // Efeito de clique no botão Adicionar Wavy Manualmente
-    const btnAdicionarWavy = document.getElementById('btnAdicionarWavy');
-    btnAdicionarWavy.addEventListener('mousedown', function() {
-        btnAdicionarWavy.style.background = '#ff1744';
-        btnAdicionarWavy.style.color = '#fff';
-    });
-    btnAdicionarWavy.addEventListener('mouseup', function() {
-        btnAdicionarWavy.style.background = '#000';
-        btnAdicionarWavy.style.color = '#fff';
-    });
-    btnAdicionarWavy.addEventListener('mouseleave', function() {
-        btnAdicionarWavy.style.background = '#000';
-        btnAdicionarWavy.style.color = '#fff';
-    });
-    // Modal lógica
-    const modalAdicionarWavy = document.getElementById('modalAdicionarWavy');
-    function abrirModalAdicionarWavy() {
-        modalAdicionarWavy.style.display = 'flex';
-    }
-    function fecharModalAdicionarWavy() {
-        modalAdicionarWavy.style.display = 'none';
-    }
-    btnAdicionarWavy.onclick = abrirModalAdicionarWavy;
-    // Fechar modal ao clicar fora do conteúdo
-    modalAdicionarWavy.addEventListener('click', function(e) {
-        if (e.target === modalAdicionarWavy) fecharModalAdicionarWavy();
-    });
-    // Submissão do formulário
-    document.getElementById('formAdicionarWavy').onsubmit = async function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const dados = {
-            IPWavy: form.IPWavy.value,
-            WavyProcessamento: form.WavyProcessamento.value,
-            Temperatura: form.Temperatura.value,
-            Velocidade_Ondas: form.Velocidade_Ondas.value,
-            Altura_Ondas: form.Altura_Ondas.value,
-            Profundidade: form.Profundidade.value,
-            Data_dados: form.Data_dados.value,
-            Estado: form.Estado.value
-        };
+});
+
+// --- Modal adicionar Wavy ---
+document.getElementById('btnAdicionarWavy').onclick = function() {
+    document.getElementById('modalAdicionarWavy').style.display = 'flex';
+};
+function fecharModalAdicionarWavy() {
+    document.getElementById('modalAdicionarWavy').style.display = 'none';
+}
+document.getElementById('modalAdicionarWavy').addEventListener('click', function(e) {
+    if (e.target === this) fecharModalAdicionarWavy();
+});
+document.getElementById('formAdicionarWavy').onsubmit = async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const dados = {
+        IPWavy: form.IPWavy.value,
+        WavyProcessamento: form.WavyProcessamento.value,
+        Temperatura: form.Temperatura.value,
+        Velocidade_Ondas: form.Velocidade_Ondas.value,
+        Altura_Ondas: form.Altura_Ondas.value,
+        Profundidade: form.Profundidade.value,
+        Data_dados: form.Data_dados.value,
+        Estado: form.Estado.value
+    };
+    try {
         const resp = await fetch('/adicionar_wavy', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(dados)
         });
-        if (resp.ok) {
+        const res = await resp.json();
+        if (res.success) {
             fecharModalAdicionarWavy();
-            window.location.reload();
+            location.reload(); // Recarrega para mostrar a nova linha
         } else {
-            alert('Erro ao adicionar Wavy!');
+            alert('Erro ao adicionar Wavy: ' + (res.error || ''));
         }
+    } catch (err) {
+        alert('Erro ao comunicar com o servidor.');
+    }
+};
+
+// --- Pesquisa por IP ---
+function pesquisarIP() {
+    let termo = document.getElementById('pesquisaIP').value.trim().toLowerCase();
+    let tabela = document.getElementById('tabelaWavy');
+    let tbody = tabela.tBodies[0];
+    for (let row of tbody.rows) {
+        let ip = row.cells[1].innerText.trim().toLowerCase();
+        row.style.display = termo === '' || ip.includes(termo) ? '' : 'none';
+    }
+}
+function limparPesquisaIP() {
+    document.getElementById('pesquisaIP').value = '';
+    pesquisarIP();
+}
+
+// --- Reset já está correto (não mexer) ---
+// --- Dropdown customizado de filtragem ---
+function getUniqueColumnValues(colIdx) {
+    let tabela = document.getElementById('tabelaWavy');
+    let tbody = tabela.tBodies[0];
+    let valores = new Set();
+    for (let row of tbody.rows) {
+        let val = row.cells[colIdx].innerText.trim();
+        if (val) valores.add(val);
+    }
+    return Array.from(valores).sort();
+}
+
+function popularDropdownValores(colIdx) {
+    let optionsDiv = document.getElementById('options-valorFiltro');
+    optionsDiv.innerHTML = '';
+    // Adiciona opção "Todos"
+    let todosDiv = document.createElement('div');
+    todosDiv.innerText = 'Todos';
+    todosDiv.onclick = function() {
+        document.getElementById('selected-valorFiltro').innerText = 'Todos';
+        optionsDiv.style.display = 'none';
+        filtrarPorValor(colIdx, null);
     };
-    // Função para remover linha (chamada pelo botão X)
-    async function removerLinha(btn) {
-        const row = btn.closest('tr');
-        const id = row.getAttribute('data-id');
-        const ipwavy = row.getAttribute('data-ipwavy');
-        if (!id || !ipwavy) {
-            alert('ID ou IPWavy não encontrado para esta linha.');
-            return;
-        }
-        if (!confirm('Tem a certeza que deseja eliminar este registo?')) return;
-        try {
-            const resp = await fetch('/eliminar_wavy', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ id: id, ipwavy: ipwavy })
-            });
-            if (resp.ok) {
-                row.style.transition = 'background 0.3s, opacity 0.3s';
-                row.style.background = '#ff1744';
-                row.style.opacity = '0.5';
-                setTimeout(() => row.remove(), 250);
-            } else {
-                const msg = await resp.text();
-                alert('Erro ao eliminar: ' + msg);
+    optionsDiv.appendChild(todosDiv);
+
+    // Adiciona opções únicas da coluna
+    getUniqueColumnValues(colIdx).forEach(function(valor) {
+        let div = document.createElement('div');
+        div.innerText = valor;
+        div.onclick = function() {
+            document.getElementById('selected-valorFiltro').innerText = valor;
+            optionsDiv.style.display = 'none';
+            filtrarPorValor(colIdx, valor);
+        };
+        optionsDiv.appendChild(div);
+    });
+}
+
+function filtrarPorValor(colIdx, valor) {
+    let tabela = document.getElementById('tabelaWavy');
+    let tbody = tabela.tBodies[0];
+    for (let row of tbody.rows) {
+        let cellVal = row.cells[colIdx].innerText.trim();
+        row.style.display = (!valor || cellVal === valor) ? '' : 'none';
+    }
+}
+
+// Atualiza o evento do primeiro dropdown
+document.querySelectorAll('#options-tipoFiltro div[data-value]').forEach(function(opt) {
+    opt.onclick = function() {
+        document.getElementById('selected-tipoFiltro').innerText = this.innerText;
+        document.getElementById('options-tipoFiltro').style.display = 'none';
+        let valFiltro = document.getElementById('dropdown-valorFiltro');
+        let selectedValor = document.getElementById('selected-valorFiltro');
+        if (this.dataset.value === "2" || this.dataset.value === "8") {
+            valFiltro.style.display = 'inline-block';
+            selectedValor.innerText = 'Todos';
+            // Popular o segundo dropdown com os valores únicos da coluna escolhida
+            popularDropdownValores(parseInt(this.dataset.value));
+        } else {
+            // Estado default: esconde o segundo dropdown, mostra todas as linhas
+            valFiltro.style.display = 'none';
+            selectedValor.innerText = 'Todos';
+            // Mostra todas as linhas
+            let tabela = document.getElementById('tabelaWavy');
+            let tbody = tabela.tBodies[0];
+            for (let row of tbody.rows) {
+                row.style.display = '';
             }
-        } catch (e) {
-            alert('Erro de ligação ao eliminar registo!');
         }
     }
+});
+
+// Evento para abrir o segundo dropdown
+document.getElementById('selected-valorFiltro').onclick = function(e) {
+    let options = document.getElementById('options-valorFiltro');
+    options.style.display = (options.style.display === 'block') ? 'none' : 'block';
+    e.stopPropagation();
+};
+
+// Fecha o segundo dropdown ao clicar fora
+document.addEventListener('click', function(e) {
+    let options = document.getElementById('options-valorFiltro');
+    if (options) options.style.display = 'none';
+});
+
+function removerLinha(btn) {
+    if (!confirm('Tem a certeza que deseja eliminar esta Wavy?')) return;
+    let tr = btn.closest('tr');
+    let id = tr.getAttribute('data-id');
+    fetch('/eliminar_wavy', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id: id})
+    })
+    .then(resp => resp.json())
+    .then(res => {
+        if (res.success) {
+            tr.remove();
+            atualizarIDsSequenciais(); // Atualiza os IDs na tabela
+        } else {
+            alert('Erro ao eliminar: ' + (res.error || ''));
+        }
+    })
+    .catch(() => alert('Erro ao comunicar com o servidor.'));
+}
+
+// Função para atualizar os IDs sequenciais na tabela
+function atualizarIDsSequenciais() {
+    let tabela = document.getElementById('tabelaWavy');
+    let tbody = tabela.tBodies[0];
+    let idx = 1;
+    for (let row of tbody.rows) {
+        if (row.style.display !== 'none') {
+            row.cells[0].innerText = idx++;
+        }
+    }
+}
     </script>
 </body>
 </html>
