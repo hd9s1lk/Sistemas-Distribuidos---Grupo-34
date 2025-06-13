@@ -512,7 +512,7 @@ function popularDropdownValores(colIdx) {
     todosDiv.onclick = function() {
         document.getElementById('selected-valorFiltro').innerText = 'Todos';
         optionsDiv.style.display = 'none';
-        filtrarPorValor(colIdx, null);
+        filtrarPorValor(colIdx, 'Todos'); // Mostra tudo
     };
     optionsDiv.appendChild(todosDiv);
 
@@ -533,8 +533,13 @@ function filtrarPorValor(colIdx, valor) {
     let tabela = document.getElementById('tabelaWavy');
     let tbody = tabela.tBodies[0];
     for (let row of tbody.rows) {
-        let cellVal = row.cells[colIdx].innerText.trim();
-        row.style.display = (!valor || cellVal === valor) ? '' : 'none';
+        // Se valor for null ou "Todos", mostra tudo
+        if (!valor || valor === 'Todos') {
+            row.style.display = '';
+        } else {
+            let cellVal = row.cells[colIdx].innerText.trim();
+            row.style.display = (cellVal === valor) ? '' : 'none';
+        }
     }
 }
 

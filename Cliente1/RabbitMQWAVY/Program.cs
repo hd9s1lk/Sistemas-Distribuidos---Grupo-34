@@ -31,8 +31,6 @@ var body2 = Encoding.UTF8.GetBytes(IP);
 await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "IP", body: body2);
 Console.WriteLine($" [x] Sent {IP}");
 
-
-
 //dados analiticos
 Random random = new Random();
 int numeroAleatorioTemp = random.Next(0,32);
@@ -46,8 +44,6 @@ int indice = random.Next(estado.Length);
 EstadoWavy estadoatual = estado[indice];
 
 var EstadoFinal = Convert.ToString(estadoatual);
-
-
 
 //mandar WavyID
 
