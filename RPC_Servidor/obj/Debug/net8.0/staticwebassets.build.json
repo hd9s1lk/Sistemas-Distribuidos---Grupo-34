@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "SGZMFzrJlfCNxTYZu4TUfWU7tjW09Cmi2lvA4q//Ymw=",
+  "Hash": "dSx4qPdCyd9cP5HebSSYKupi2YdXJ+tow375ZI04/RA=",
   "Source": "RPC_Servidor",
   "BasePath": "_content/RPC_Servidor",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

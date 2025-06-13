@@ -145,7 +145,7 @@ class Example
             {
                 connection.Open();
 
-                string query = "INSERT INTO DadosAgregador (IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_Dados, Estado) " +
+                string query = "INSERT INTO dados_agregador (IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_Dados, Estado) " +
                                "VALUES (@IPWavy, @WavyProc, @Temp, @VelOndas, @AlturaOndas, @Profundidade, @Data, @Estado)";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -168,7 +168,7 @@ class Example
                     {
                         Console.WriteLine("Dados inseridos com sucesso. A verificar...");
 
-                        string checkQuery = "SELECT TOP 1 * FROM DadosAgregador ORDER BY Id DESC";
+                        string checkQuery = "SELECT TOP 1 * FROM dados_agregador ORDER BY Id DESC";
                         using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
                         {
                             using (SqlDataReader reader = checkCommand.ExecuteReader())

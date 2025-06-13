@@ -266,7 +266,7 @@
     <table id="tabelaWavy">
         <thead>
             <tr>
-                <th onclick="ordenarTabela(0)" style="cursor:pointer; user-select:none;">ID <span id="seta-0"></span></th>
+                <th onclick="ordenarTabela(0)" style="cursor:pointer; user-select:none;"># <span id="seta-0"></span></th>
                 <th onclick="ordenarTabela(1)" style="cursor:pointer; user-select:none;">IPWavy <span id="seta-1"></span></th>
                 <th onclick="ordenarTabela(2)" style="cursor:pointer; user-select:none;">WavyProcessamento <span id="seta-2"></span></th>
                 <th onclick="ordenarTabela(3)" style="cursor:pointer; user-select:none;">Temperatura <span id="seta-3"></span></th>
@@ -281,7 +281,8 @@
         <tbody>
             {% for linha in dados %}
             <tr data-id="{{ linha[0] }}" data-ipwavy="{{ linha[1] }}">
-                {% for i in range(colunas|length) %}
+                <td data-label="ID">{{ loop.index }}</td>
+                {% for i in range(1, colunas|length) %}
                     <td data-label="{{ colunas[i] }}">{{ linha[i] }}</td>
                 {% endfor %}
                 <td><button class="btn-remover" title="Eliminar" onclick="removerLinha(this)">X</button></td>
@@ -396,6 +397,19 @@
             if (seta) seta.innerText = '';
         }
         ordemAtual = {col: null, asc: true};
+
+        // --- NOVO: Restaura a ordem original das linhas ---
+        if (linhasOriginais && linhasOriginais.length) {
+            // Remove todas as linhas atuais
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+            // Adiciona as linhas na ordem original
+            linhasOriginais.forEach(function(row) {
+                tbody.appendChild(row);
+            });
+            atualizarIDsSequenciais();
+        }
     }
     // --- Dropdown customizado ---
 function toggleDropdown(tipo) {

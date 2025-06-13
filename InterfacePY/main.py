@@ -45,14 +45,6 @@ def eliminar_wavy():
         )
         cursor = conn.cursor()
         cursor.execute("DELETE FROM dados_agregador WHERE ID = ?", id_val)
-        # Reatribuir IDs sequenciais
-        cursor.execute("""
-            WITH CTE AS (
-                SELECT ID, ROW_NUMBER() OVER (ORDER BY ID) AS NewID
-                FROM dados_agregador
-            )
-            UPDATE CTE SET ID = NewID
-        """)
         conn.commit()
         cursor.close()
         conn.close()
@@ -71,14 +63,11 @@ def adicionar_wavy():
             'Trusted_Connection=yes;'
         )
         cursor = conn.cursor()
-        cursor.execute("SELECT ISNULL(MAX(ID), 0) FROM dados_agregador")
-        max_id = cursor.fetchone()[0]
-        novo_id = max_id + 1
         cursor.execute("""
-            INSERT INTO dados_agregador (ID, IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_dados, Estado)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO dados_agregador 
+            (IPWavy, WavyProcessamento, Temperatura, Velocidade_Ondas, Altura_Ondas, Profundidade, Data_dados, Estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """, (
-            novo_id,
             data['IPWavy'],
             data['WavyProcessamento'],
             data['Temperatura'],

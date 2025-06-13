@@ -36,3 +36,38 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_Ser
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.pdb
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.genruntimeconfig.cache
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\ref\RPC_Servidor.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\appsettings.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\RPC_Servidor.exe
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\RPC_Servidor.deps.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\RPC_Servidor.runtimeconfig.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\RPC_Servidor.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\RPC_Servidor.pdb
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Google.Protobuf.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Grpc.Core.Api.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Grpc.Net.Client.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\bin\Debug\net8.0\Grpc.Net.Common.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.csproj.AssemblyReference.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.AssemblyInfoInputs.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.AssemblyInfo.cs
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.sourcelink.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets\msbuild.RPC_Servidor.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets\msbuild.build.RPC_Servidor.props
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.RPC_Servidor.props
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.RPC_Servidor.props
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\scopedcss\bundle\RPC_Servidor.styles.css
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Serv.EFFE0235.Up2Date
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\refint\RPC_Servidor.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.pdb
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\RPC_Servidor.genruntimeconfig.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\RPC_Servidor\obj\Debug\net8.0\ref\RPC_Servidor.dll

@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\",
+  "WorkspaceRootPath": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\rpc_servidor\\services\\greeterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|c:\\users\\rafae\\desktop\\sd\\sistemas-distribuidos---grupo-34\\rpc_servidor\\services\\greeterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|solutionrelative:services\\greeterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\rpc_servidor\\protos\\greet.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "AbsoluteMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|c:\\users\\rafae\\desktop\\sd\\sistemas-distribuidos---grupo-34\\rpc_servidor\\protos\\greet.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|solutionrelative:protos\\greet.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|c:\\users\\henrique dias\\documents\\github\\sistemas-distribuidos---grupo-34\\rpc_servidor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|c:\\users\\rafae\\desktop\\sd\\sistemas-distribuidos---grupo-34\\rpc_servidor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{974C9950-8088-4AEF-9D69-1E1EBBAB49E5}|RPC_Servidor.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,15 +22,55 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 11,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{904ea1b4-c6a7-4eca-94a1-76eab06c5187}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Program.cs",
+              "ToolTip": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -40,9 +80,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "GreeterService.cs",
-              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Services\\GreeterService.cs",
+              "DocumentMoniker": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Services\\GreeterService.cs",
               "RelativeDocumentMoniker": "Services\\GreeterService.cs",
-              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Services\\GreeterService.cs",
+              "ToolTip": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Services\\GreeterService.cs",
               "RelativeToolTip": "Services\\GreeterService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -53,14 +93,31 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "greet.proto",
-              "DocumentMoniker": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Protos\\greet.proto",
+              "DocumentMoniker": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Protos\\greet.proto",
               "RelativeDocumentMoniker": "Protos\\greet.proto",
-              "ToolTip": "C:\\Users\\Henrique Dias\\Documents\\GitHub\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Protos\\greet.proto",
+              "ToolTip": "C:\\Users\\rafae\\Desktop\\SD\\Sistemas-Distribuidos---Grupo-34\\RPC_Servidor\\Protos\\greet.proto",
               "RelativeToolTip": "Protos\\greet.proto",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-05-26T13:23:28.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T13:23:28.39Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 92,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             }
           ]
         }

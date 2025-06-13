@@ -18,3 +18,23 @@ C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.pdb
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.genruntimeconfig.cache
 C:\Users\Henrique Dias\Documents\GitHub\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\ref\Cliente.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\Cliente.exe
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\Cliente.deps.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\Cliente.runtimeconfig.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\Cliente.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\Cliente.pdb
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\bin\Debug\net8.0\System.Threading.RateLimiting.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.csproj.AssemblyReference.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.AssemblyInfoInputs.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.AssemblyInfo.cs
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.sourcelink.json
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.csproj.Up2Date
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\refint\Cliente.dll
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.pdb
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\Cliente.genruntimeconfig.cache
+C:\Users\rafae\Desktop\SD\Sistemas-Distribuidos---Grupo-34\Cliente1\obj\Debug\net8.0\ref\Cliente.dll
